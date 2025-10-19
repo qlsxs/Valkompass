@@ -102,14 +102,20 @@ function openSubcategory(i, j) {
     killChildren(candidateList);
     console.log(subCandidates)
     for(let k = 0; k < subCandidates.length; k++){
-        let div  = document.createElement("img");
+        let div  = document.createElement("div");
         let img = document.createElement("img")
-        let elem = document.createElement('p');
-        elem.innerHTML = subCandidates[k]["name"];
+        let name = document.createElement('p');
+        name.innerHTML = subCandidates[k]["name"];
         img.src = "../images/" + subCandidates[k]["pfp"];
         img.classList.add("pfp")
+        img.style.width = "60px";
+        img.style.height = "60px";
+        img.style.marginRight = "15px";
+        div.classList.add("candidate-list-div")
+        name.classList.add("whiteBtnText");
+        name.style.color = "white";
         div.append(img)
-        div.append(elem);
+        div.append(name);
         candidateList.append(div);
     }
 
