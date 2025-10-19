@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'EB Garmond'; 
+    src: url(../fonts/EBGaramond-Regular.ttf)
+}
+@font-face {
+    font-family: 'Roboto'; 
+    src: url(../fonts/Roboto-Regular.ttf)
+}
+@font-face {
+    font-family: 'Roboto SemiBold'; 
+    src: url(../fonts/Roboto-SemiBold.ttf)
+}
+
+body {
+    background-color: #231F20;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.category {
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+    margin: 20px;
+    border: 2px solid #000;
+    text-align: center;
+    border-radius: 50px / 50%;
+}
+
+.subcategory{
+    background-color: #231F20;
+    color: white;
+}
+
+.category:hover{
+    cursor:pointer
+}
+
+#subcategory-main-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20vw;
+}
+
+#subcategory-description{
+    font-family: "Roboto";
+    color:white;
+    font-size:20px;
+}
+
+.pfp{
+    border-radius: 50%;
+}
+
