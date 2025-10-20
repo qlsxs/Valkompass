@@ -20,6 +20,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 }
 
 .category {
@@ -30,6 +31,9 @@ body {
     border: 2px solid #000;
     text-align: center;
     border-radius: 50px / 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .subcategory{
@@ -54,10 +58,13 @@ body {
 }
 
 .candidate-list-div{
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 10px;
-        align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.candidate-list-div:hover{
+    cursor: pointer;
 }
 
 .pfp{
