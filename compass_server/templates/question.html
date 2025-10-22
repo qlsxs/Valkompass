@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div id="subcategory-main-menu">
+    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
+        <h1 id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</h1>
+    </div>
+    <div style="width: 100%;">
+        fråga fråga fråga   
+    </div>
+    <div>
+        <div class="circle"></div>
+    </div>
+</div>
+{%endblock%}
+
+{%block fixedBottom%}
+<a href="{{url_for('load_question', cat = url, id = id+1)}}"  id="bottomButton" class="flexAlign" style="width:50%;text-align:center">
+    <div>
+        <h1 class=".orangeButtonText" style="color: white;">Nästa</h1>
+    </div>
+</a>
+{%endblock%}

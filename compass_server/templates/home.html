@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div id="main" class="flexAlign" onload="">
+    <div id="main-menu" class="flexAlign" style="width: 100%">
+        <h1 style="color: white;align-self:center;" class="title">Valkompassen</h1>
+        <div id="categoriesList" class="flexAlign" style="width: 100%;">
+            {%for i in range(0, categories|length)%}
+            {%if categories[i]["src"] == "#"%}
+            <div class="category" onclick="toggleShownSubcategories({{categories[i]['id']}})" id="{{i}}">{{categories[i]["name"]}}</div>
+            {%else%}
+            <a href="{{url_for('load_category', cat = categories[i]['src'])}}" class="category subcategory" style="display: none;">
+                <div>{{categories[i]["name"]}}</div>
+            </a>
+            {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+
+{%block fixedBottom%}
+    <div id="bottomButton" class="flexAlign" style="width:50%;text-align:center">
+        <h1 class=".orangeButtonText" style="color: white;">Slumpad post</h1>
+    </div>
+{%endblock%}

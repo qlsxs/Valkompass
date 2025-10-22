@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+
+{%block title%}Index{%endblock%}
+
+{%block headerBlock%}
+<h1 class="display-3">Välkommen till forumet!</h1>
+{%endblock%}
+
+{%block content%}
+<div class="d-flex align-content-center justify-content-center mt-5">
+    <form method="POST" action="{{url_for('login')}}">
+        {{form.hidden_tag()}}
+        <p>{{form.username.label}} <br>
+            {{form.username(class_="form-control")}}
+            {%if form.username.errors %}
+            {%for error in form.username.errors%}
+            <br>{{error}}
+            {%endfor%}
+            {%endif%}
+        </p>
+        <p>{{form.password.label}} <br>
+            {{form.password(class_="form-control")}}
+            {%if form.password.errors %}
+            {%for error in form.password.errors%}
+            <br>{{error}}
+            {%endfor%}
+            {%endif%}
+        </p>
+        <p>
+            {{form.submit(class_="form-control")}}
+            {%if form.submit.errors %}
+            {%for error in form.submit.errors%}
+            <br>{{error}}
+            {%endfor%}
+            {%endif%}
+        </p>
+
+    </form>
+</div>
+{%endblock%}

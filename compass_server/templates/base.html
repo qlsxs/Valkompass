@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='data.js')}}"></script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</head>
+
+<body>
+    <div style="display: flex; justify-content:center;align-items:center;flex-direction:column">
+        <div style="width: 30%;">
+            <nav style="width:100%">
+                <div style="width:100%; display:flex">
+                    <div style="flex-grow:1;display:flex;align-items:center">
+                        <a href="../static/index.html"><img src="{{url_for('static', filename='images/back.png')}}"
+                                style="width: 42px;height:42px" alt="Back"></a>
+                    </div>
+                    <div style="flex-grow:1;display:flex;align-items:center;justify-content:end">
+                        <img src="{{url_for('static', filename='images/FrakturF2020.png')}}" style="width: 42px;height:42px" alt="">
+                    </div>
+                </div>
+            </nav>
+            {%block content%}{%endblock%}
+            <div id="bottomDiv">
+                {%block fixedBottom%}{%endblock%}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
