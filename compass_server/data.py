@@ -477,6 +477,24 @@ def get_subcategory(cat):
         for j in range(0, len(subCategories[i])):
             if (subCategories[i][j]["src"] == cat):
                 return subCategories[i][j]
+            
+def get_data_for_question(cat, i):
+    # Returns everything neccesary to display the i:th question for the category cat
+    category = get_subcategory(cat)
+    if(category == None):
+        return None, None, None
+    candidates = []
+    if(i == -1): 
+        i = len(category["candidates"])-1
+    if(i < 0 or i > len(category["candidates"])):
+        return None, None, None
+    if(i == len(category["candidates"])):
+        return "Max", "Max", "Max"
+    for cand in category["candidates"]:
+        # only display the data for the relevant question, send less stuff
+        candidates.append({"name": cand["name"], "year": cand["year"], "pfp": cand["pfp"], "answer": cand["answers"][i]})
+    return {"name": category["name"], "desc": category["desc"], "src":category["src"]}, candidates, category["questions"][i]
+        
 
 
 def get_question(cat, id):
