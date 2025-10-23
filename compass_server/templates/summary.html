@@ -1,7 +1,7 @@
 {%extends "base.html"%}
 
 {%block backLink%}
-{{url_for('home')}}
+{{url_for('load_question', cat = url, id = "last")}}
 {%endblock%}
 
 {%block content%}
@@ -27,9 +27,9 @@
 {%endblock%}
 
 {%block fixedBottom%}
-<a href="{{url_for('load_question', cat = url, id = 0)}}"  id="bottomButton" class="flexAlign" style="width:50%;text-align:center">
+<a href="{{url_for('home'}}"  id="bottomButton" class="flexAlign" style="width:50%;text-align:center">
     <div>
-        <h1 class=".orangeButtonText" style="color: white;">Nästa</h1>
+        <h1 class=".orangeButtonText" style="color: white;">Tillbaka till alla poster</h1>
     </div>
 </a>
 {%endblock%}

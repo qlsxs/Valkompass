@@ -1,21 +1,59 @@
 {%extends "base.html"%}
 
+{%block backLink%}
+{{url_for('load_question', cat = url, id = id-1)}}
+{%endblock%}
+
 {%block content%}
 <div id="subcategory-main-menu">
     <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
         <h1 id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</h1>
     </div>
-    <div style="width: 100%;">
-        fråga fråga fråga   
+    <div style="width: 100%;color:white;margin-bottom:50px" class="bodyText">
+        {{question}}<br><br>
+        1 - Ja<br>
+        10 - Nej
     </div>
-    <div>
-        <div class="circle"></div>
+    <div style="display: flex; flex-direction:row;width:100%">
+        {%for i in range(0,11)%}
+        <div class="optionContainer">
+            {%if i == 0%}
+            <div class="invisibleRadioCircle flexAlign bodyText">1</div>
+            {%elif i == 9%}
+            <div class="invisibleRadioCircle flexAlign bodyText">10</div>
+            {%elif i == 10%}
+            <div class="invisibleRadioCircle flexAlign bodyText">Annat</div>
+            {%else%}
+            <div class="invisibleRadioCircle"></div>
+            {%endif%}
+            <div class="radioCircle flexAlign" onclick="selectOption('{{url}}', {{i}})"></div>
+            {%for j in range(0, answers|length)%}
+            {%if answers[j]["value"] == i+1%}
+            <img src="{{url_for('static', filename='images/' + candidates[j]['pfp'])}}" id="{{j}}" class="radioCircleImage"
+                onclick="revealReason({{j}})">
+          
+            {%endif%}
+            {%endfor%}
+        </div>
+        {%endfor%}
     </div>
 </div>
+{%for j in range(0, answers|length)%}
+<div style="display: none;" id="">
+    <p id="{{j}}-reason">
+        {{answers[j]["reason"]}}
+    </p>
+    <p id="{{j}}-name">
+        {{candidates[j]["name"]}}
+    </p>
+    <img src="{{url_for('static', filename='images/' + candidates[j]['pfp'])}}" id="{{j}}-img">
+</div>
+{%endfor%}
 {%endblock%}
 
 {%block fixedBottom%}
-<a href="{{url_for('load_question', cat = url, id = id+1)}}"  id="bottomButton" class="flexAlign" style="width:50%;text-align:center">
+<a href="{{url_for('load_question', cat = url, id = id+1)}}" id="bottomButton" class="flexAlign"
+    style="width:50%;text-align:center">
     <div>
         <h1 class=".orangeButtonText" style="color: white;">Nästa</h1>
     </div>

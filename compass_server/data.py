@@ -69,12 +69,35 @@ categories = [
 ]
 
 subCategories = [
-    [ #  Styret
+    [  # Styret
         {
             "name": "Sektionsordförande",
             "desc": "Ordförande har det övergripande ansvaret för sektionen och är ansiktet utåt mot THS och andra sektioner. Ordförande leder också styrelsens arbete under året.",
             "src": "styret-ordforande",
             "amount": 1,
+            "candidates": [
+                {
+                    "name": "Förnamn Efternamn 1",
+                    "year": 22,
+                    "pfp": "image.png",
+                    "answers": [{"value": 3, "reason": "bla bbla bla"}, {"value": 1, "reason": "badsfla bbla bla"}, {"value": 5, "reason": "bla bbla asdfbla"}]
+                },
+                {
+                    "name": "Förnamn Efternamn 2",
+                    "year": 20,
+                    "pfp": "image2.jpg",
+                    "answers": [{"value": 5, "reason": "bla bbasfdasdfla bla"}, {"value": 4, "reason": "badsflasdfa bbla bla"}, {"value": 9, "reason": "bla basdfbla asdfbla"}]
+                },
+                {
+                    "name": "Förnamn Efternamn 3",
+                    "year": 25,
+                    "pfp": "image3.png",
+                    "answers": [{"value": 3, "reason": "bla bbldfssdfa bla"}, {"value": 3, "reason": "badsfla bbla bla"}, {"value": 6, "reason": "bla bbsadfsadf fasdfsadfsd asadffsdsfdla asdfbla"}]
+                }
+            ],
+            "questions": [
+                "fråga fråga fråga1", "frågafråga fråga2", "fråga fråga fråga 3"
+            ]
         },
         {
             "name": "Viceordförande",
@@ -101,7 +124,7 @@ subCategories = [
             "amount": 3,
         }
     ],
-    [ #  Mottagningen
+    [  # Mottagningen
         {
             "name": "Fadderist",
             "desc": "Fadderisterna är ansvariga för att arrangera sektionens mottagning, de två veckorna i augusti då vi välkomnar alla nyantagna. De har också en teatral roll under mottagningen där de är lite roliga och spexiga.",
@@ -109,7 +132,7 @@ subCategories = [
             "amount": 4,
         }
     ],
-    [ # *fkm
+    [  # *fkm
         {
             "name": "Klubbmästare",
             "desc": "Klubbmästarna är ordförande, vice och kassör för klubbmästeriet fkm*. Det innebär att de ansvarar för att arrangera regelbundna pubar och sittningar och ansvarar för all alkoholförsäljning i konsulatet. De rekryterar och leder också alla underansvariga i fkm* som har hand om dekor, mat, märken och dryck på pubar och gasquer.",
@@ -117,7 +140,7 @@ subCategories = [
             "amount": 3,
         }
     ],
-    [ # FSN
+    [  # FSN
         {
             "name": "SNO",
             "desc": "SNO är ordförande för för studienämnden FSN. Hen sköter det administrativa arbetet i studienämnden och representerar sektionens studenter och deras åsikter mot KTH. SNO fixar också event för studienämnden och har en överblick över deras arbete.",
@@ -137,7 +160,7 @@ subCategories = [
             "amount": 1,
         }
     ],
-    [ # Fysikalen
+    [  # Fysikalen
         {
             "name": "Stabsledningen",
             "desc": "Stabsledningen är ordförande, vice och kassör för Fysikalen, sektionens så kallade spex (studentikosa musikalteater). De har ansvar för att rekrytera alla gruppchefer som tillsammans leder och skapar spexet. De väljs vartannat år och sitter i två år.",
@@ -145,7 +168,7 @@ subCategories = [
             "amount": 3,
         }
     ],
-    [ # FAN
+    [  # FAN
         {
             "name": "Ordförande",
             "desc": "Ordförande för aktivitetsnämnden (oFAN) ansvarar för att leda FAN i sitt arbete genom att bl.a. rekrytera underansvariga som fixar små regelbundna aktiviteter och fixa större event som t.ex.  Åreresan och PAFF.",
@@ -153,7 +176,7 @@ subCategories = [
             "amount": 1,
         }
     ],
-    [ # JämN
+    [  # JämN
         {
             "name": "Ordförande",
             "desc": "Jämlikhetsnämndens ordförande (oJämN) är delvis ansvarig för jämlikhetsarbetet på sektionen och leder jämlikhetsnämndens arbete genom att bl.a. rekrytera underansvariga, hålla lunchmöten och planera aktiviteter som har med jämlikhet att göra.",
@@ -161,7 +184,7 @@ subCategories = [
             "amount": 1,
         }
     ],
-    [ # FRum
+    [  # FRum
         {
             "name": "GK (Ordförande)",
             "desc": "GK (Generalkonsul) är ordförande för lokalnämnden FRum. Hen är ansvarig för vår sektionslokal konsulatet och leder tillsammans med CdA FRums arbete genom bl.a. lunchmöten, städdagar och internevent. De rekryterar också underansvariga som bl.a. har ansvar för sektionsbilen.",
@@ -175,7 +198,7 @@ subCategories = [
             "amount": 1,
         }
     ],
-    [ # FINT
+    [  # FINT
         {
             "name": "President",
             "desc": "FINTo is the head of the international organization in the chapter. They organize meetings, keep in contact with the administration and lead FINT in its day to day work. They are also responsible for the international reception for all exchange students coming to the physics chapter. ",
@@ -183,7 +206,7 @@ subCategories = [
             "amount": 0,
         }
     ],
-    [ # Fcom
+    [  # Fcom
         {
             "name": "Ordförande",
             "desc": "Fcoms ordförande ansvarar för att samordna Fcom och dess delnämnder, The Force, F.Dev och FArt som tillsammans har hand om sektionens kommunikation och informationsspridning. Hen är också ansvarig för generella sektionsmärken, ovverallerna och sångboken.",
@@ -209,7 +232,7 @@ subCategories = [
             "amount": 1,
         },
     ],
-    [ # FN
+    [  # FN
         {
             "name": "Ordförande",
             "desc": "Generalsekreteraren är ordförande för näringslivsnämnden FN och leder deras allmänna arbete genom att bl.a. hålla möten, rekrytera underansvariga och ansvarar för annan operativ verksamhet.",
@@ -235,7 +258,7 @@ subCategories = [
             "amount": 1,
         }
     ],
-    [ # Vårbalen
+    [  # Vårbalen
         {
             "name": "Arrangör",
             "desc": "Vårbalsarrnagörerna, som det låter, arrangerar vårbalen, sektionens stora finsittning under våren. Det innebär att de planerar, bestämmer tema, rekryterar underansvariga och jobbare och har en överblick och leder arbetet för att se till att sektionen får en lyckad vårbal.",
@@ -243,7 +266,7 @@ subCategories = [
             "amount": 3,
         }
     ],
-    [ # Revisor
+    [  # Revisor
         {
             "name": "SPECIAL",
             "desc": "Revisorerna ska ha koll på sektionens styrdokument och granska och stötta styrelsen och resten av sektionen i deras arbete kring det. Eftersom de ska vara granskande av sektionens arbete är revisorer ofta alumner som inte längre har en särskilt stark koppling till resten av sektionens funktionärer och arbete.",
@@ -255,24 +278,21 @@ subCategories = [
 ]
 
 candidates = [
-    [ #  Styret
+    [  # Styret
         [
             {
                 "name": "Förnamn Efternamn 1",
                 "year": 22,
-                "qna": [],
                 "pfp": "image.png"
             },
             {
                 "name": "Förnamn Efternamn 2",
                 "year": 20,
-                "qna": [],
                 "pfp": "image2.jpg"
             },
             {
                 "name": "Förnamn Efternamn 3",
                 "year": 25,
-                "qna": [],
                 "pfp": "image3.png"
             }
         ], [
@@ -285,48 +305,48 @@ candidates = [
 
         ]
     ],
-    [ #  Mottagningen
+    [  # Mottagningen
         [
 
         ]
     ],
-    [ # *fkm
+    [  # *fkm
         []
     ],
-    [ # FSN
+    [  # FSN
         [], [], []
     ],
-    [ # Fysikalen
+    [  # Fysikalen
         []
     ],
-    [ # FAN
+    [  # FAN
         []
     ],
-    [ # JämN
+    [  # JämN
         []
     ],
-    [ # FRum
+    [  # FRum
         [], []
     ],
-    [ # FINT
+    [  # FINT
         []
     ],
-    [ # Fcom
+    [  # Fcom
         [], [], [], []
     ],
-    [ # FN
+    [  # FN
         [], [], [], []
     ],
-    [ # Vårbalen
+    [  # Vårbalen
         []
     ],
-    [ # Revisor
+    [  # Revisor
         []
     ],
 ]
 
 questions = [
-    [ #  Styret
+    [  # Styret
         [
             "fråga fråga fråga1", "frågafråga fråga2", "fråga fråga fråga 3"
         ], [
@@ -339,42 +359,101 @@ questions = [
 
         ]
     ],
-    [ #  Mottagningen
+    [  # Mottagningen
         [
 
         ]
     ],
-    [ # *fkm
+    [  # *fkm
         []
     ],
-    [ # FSN
+    [  # FSN
         [], [], []
     ],
-    [ # Fysikalen
+    [  # Fysikalen
         []
     ],
-    [ # FAN
+    [  # FAN
         []
     ],
-    [ # JämN
+    [  # JämN
         []
     ],
-    [ # FRum
+    [  # FRum
         [], []
     ],
-    [ # FINT
+    [  # FINT
         []
     ],
-    [ # Fcom
+    [  # Fcom
         [], [], [], []
     ],
-    [ # FN
+    [  # FN
         [], [], [], []
     ],
-    [ # Vårbalen
+    [  # Vårbalen
         []
     ],
-    [ # Revisor
+    [  # Revisor
+        []
+    ],
+]
+
+candidates_answers = [
+    [  # Styret
+        [
+            [{"value": 1, "reason": "bla bliasdikopiasjk dopasjkdopajsdijasidji asjdisjkdopajsdijasidjiasjdisjkd opajsdijasidjiasjdisjkdo ajsdijasidjiasjdisjkdopa jsdijasidjiasjdis jkdopajsdijasidjiasj disjkdopajsdijasidjiasjd isjkdopajsdijasidjiasjdisj dopajsdijasidjias jdisjkdopajsdijasidjiasjdisjkdopajsdijas idjiasjdisjkdopajsd ijasidjiasjd isjkdopajsdijasi djiasjdis jkdopajsdija sidjiasjdia bla"}, {
+                "value": 1, "reason": "bla b1la bla"}, {"value": 3, "reason": "bla b4la bla"}],  # ans to q1
+            [{"value": 4, "reason": "bla bla 23bla"}, {"value": 3, "reason": "bla42 bla bla"}, {
+                "value": 5, "reason": "bla 134la bla"}],  # ans to q2
+            [{"value": 5, "reason": "bla dfsbla bla"}, {"value": 3, "reason": "bla sadfbla bla"}, {
+                "value": 5, "reason": "bla blsdfa bla"}]  # ans to q3
+        ], [
+
+        ], [
+
+        ], [
+
+        ], [
+
+        ]
+    ],
+    [  # Mottagningen
+        [
+
+        ]
+    ],
+    [  # *fkm
+        []
+    ],
+    [  # FSN
+        [], [], []
+    ],
+    [  # Fysikalen
+        []
+    ],
+    [  # FAN
+        []
+    ],
+    [  # JämN
+        []
+    ],
+    [  # FRum
+        [], []
+    ],
+    [  # FINT
+        []
+    ],
+    [  # Fcom
+        [], [], [], []
+    ],
+    [  # FN
+        [], [], [], []
+    ],
+    [  # Vårbalen
+        []
+    ],
+    [  # Revisor
         []
     ],
 ]
@@ -386,18 +465,33 @@ def get_all_categories():
     for i in range(0, len(categories)):
         cats.append(categories[i])
         for j in range(0, len(subCategories[i])):
-            cats.append(subCategories[i][j])
+            condensed_subcat = {"name": subCategories[i][j]["name"], "src": subCategories[i][j]["src"]}
+            cats.append(condensed_subcat)
     return cats
 
-def get_subcategory_and_candidates(cat):
+
+
+def get_subcategory(cat):
     # Returns the subcategory with src cat
     for i in range(0, len(subCategories)):
         for j in range(0, len(subCategories[i])):
-            if(subCategories[i][j]["src"] == cat):
-                return subCategories[i][j], candidates[i][j]
+            if (subCategories[i][j]["src"] == cat):
+                return subCategories[i][j]
+
 
 def get_question(cat, id):
     for i in range(0, len(subCategories)):
         for j in range(0, len(subCategories[i])):
-            if(subCategories[i][j]["src"] == cat):
+            if (subCategories[i][j]["src"] == cat):
+                if (id == len(questions[i][j])):
+                    return "Max"
+                elif (id > len(questions[i][j])):
+                    return None
                 return questions[i][j][id]
+
+
+def get_candidate_answers_for_question(cat, id):
+    for i in range(0, len(subCategories)):
+        for j in range(0, len(subCategories[i])):
+            if (subCategories[i][j]["src"] == cat):
+                return candidates_answers[i][j][id]

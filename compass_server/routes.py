@@ -15,18 +15,35 @@ def home():
 
 @app.route("/category/<cat>")
 def load_category(cat):
-    subcategory, candidates = data.get_subcategory_and_candidates(cat)
+    subcategory = data.get_subcategory(cat)
+    candidates = []
+    for cand in subcategory["candidates"]:
+        candidates.append({"name": cand["name"], "year": cand["year"], "pfp": cand["pfp"]})
     return render_template("category.html", subcategory = subcategory, candidates = candidates, url = cat)
+
+# WE HAVE UPDATED THE DATA SYSTEM, REMAKE THESE THINGS
 
 @app.route("/questions/<cat>/<id>")
 def load_question(cat, id):
-    subcategory, candidates = data.get_subcategory_and_candidates(cat)
-    question = data.get_question(cat, int(id))
-    if(id == "0"):
+    if(not id.isnumeric()):
         return redirect("/category/" + cat)
     else:
-        return render_template("question.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat)
+        subcategory, candidates = data.get_subcategory_and_candidates(cat)
+        if(subcategory == None):
+            return redirect("home.html", categories = data.get_all_categories())
+        question = data.get_question(cat, int(id))
+        if(question == None):
+            return redirect("/category/" + cat)
+        elif(question == "Max"):
+            return redirect("/summary/" + cat)
+        else:     
+            answers = data.get_candidate_answers_for_question(cat, int(id))
+            return render_template("question.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat, answers = answers)
 
+@app.route("/summary/<cat>")
+def show_summary(cat):
+    subcategory, candidates = data.get_subcategory_and_candidates(cat)
+    return render_template("summary.html", subcategory = subcategory, candidates = candidates)
 # @app.route("/newuser", methods=["GET", "POST"])
 # def newuser():
 #     if(request.method == "POST"):
