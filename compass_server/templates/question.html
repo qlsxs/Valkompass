@@ -14,7 +14,7 @@
         1 - Ja<br>
         10 - Nej
     </div>
-    <div style="display: flex; flex-direction:row;width:100%">
+    <div class="optionMainDiv">
         {%for i in range(0,11)%}
         <div class="optionContainer">
             {%if i == 0%}
@@ -52,8 +52,7 @@
 {%endblock%}
 
 {%block fixedBottom%}
-<a href="{{url_for('load_question', cat = url, id = id+1)}}" id="bottomButton" class="flexAlign"
-    style="width:50%;text-align:center">
+<a href="{{url_for('load_question', cat = url, id = id+1)}}" id="bottomButton" class="flexAlign">
     <div>
         <h1 class=".orangeButtonText" style="color: white;">Nästa</h1>
     </div>

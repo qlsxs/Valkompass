@@ -30,7 +30,7 @@ def load_question(cat, id):
     else:
         if(id == "last"):
             id = -1
-        subcategory, candidates, question = data.get_data_for_question(cat, int(id))
+        subcategory, candidates, question, id = data.get_data_for_question(cat, int(id))
         if(subcategory == None):
             return redirect("/home")
         elif(question == "Max"):
@@ -42,7 +42,7 @@ def load_question(cat, id):
 @app.route("/category/<cat>/summary")
 def show_summary(cat):
     subcategory = data.get_subcategory(cat)
-    return render_template("summary.html", subcategory = subcategory)
+    return render_template("summary.html", subcategory = subcategory, url = cat)
 # @app.route("/newuser", methods=["GET", "POST"])
 # def newuser():
 #     if(request.method == "POST"):

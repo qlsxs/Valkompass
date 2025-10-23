@@ -56,10 +56,10 @@ function openSubcategory(i, j) {
 
 }
 
-function calculateRadioRadius() {
+function calculateRadioRadius(id) {
     // Returns the width/height of the radio buttons for the questions
-    if (document.getElementById("subcategory-main-menu") != null) {
-        const total = document.getElementById("subcategory-main-menu").offsetWidth;
+    if (document.getElementById(id) != null) {
+        const total = document.getElementById(id).offsetWidth;
         return (total - 40) / 11;
     }
 }
@@ -132,5 +132,15 @@ function removeReasonMenu(e) {
     }
     else {
         setTimeout(() => $(document).one('click', ((e) => { removeReasonMenu(e) })), 10)
+    }
+}
+
+function toggleVisibility(id){
+    let elem = document.getElementById(id)
+    if(elem.style.display === "none"){
+        elem.style.display = ""
+    }
+    else{
+        elem.style.display = "none"
     }
 }

@@ -8,28 +8,80 @@
 <div id="subcategory-main-menu">
     <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
         <h1 id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</h1>
-        <p id="subcategory-description" class="bodyText">{{subcategory["desc"]}} Läs mer <a href="/#">här</a><br>Sökes:
-            <strong>{{subcategory["amount"]}}st</strong></p>
     </div>
     <div style="width: 100%;">
-        <p style="color:white;" class="whiteBtnText"><strong>Kandidater</strong>:</p>
-        <div id="candidate-list">
-            {%for cand in candidates%}
-            <div class="candidate-list-div">
-                <img src="/static/images/{{cand['pfp']}}" alt="" class="pfp"
-                    style="width: 60px; height:60px;margin-right:15px;margin-bottom:15px">
-                <p class="whiteBtnText" style="color: white;">{{cand["name"]}}</p>
+        <div class="flexAlign" style="width: 100%;" id="questions">
+            <div class="category" onclick="toggleVisibility('results-container')">
+                Frågor
             </div>
-            {%endfor%}
+            <div style="width: 100%;display:none" class="flexAlign" id="results-container">
+                {%for i in range(0, subcategory["questions"]|length)%}
+                <div class="category subcategory" onclick="toggleVisibility('{{i}}-results')">
+                    {{subcategory["questions"][i]}}</div>
+                <div class="optionMainDiv" style="width:90%;justify-content: center;display:none" id="{{i}}-results">
+                    {%for j in range(0,11)%}
+                    <div class="optionContainer">
+                        {%if j == 0%}
+                        <div class="invisibleRadioCircle flexAlign bodyText">1</div>
+                        {%elif j == 9%}
+                        <div class="invisibleRadioCircle flexAlign bodyText">10</div>
+                        {%elif j == 10%}
+                        <div class="invisibleRadioCircle flexAlign bodyText">Annat</div>
+                        {%else%}
+                        <div class="invisibleRadioCircle"></div>
+                        {%endif%}
+                        <div class="radioCircle flexAlign"></div>
+                        {%for candidate in subcategory["candidates"]%}
+                        {%if candidate["answers"][i]["value"] == j+1%}
+                        <img src="{{url_for('static', filename='images/' + candidate['pfp'])}}" style="display:block"
+                            class="radioCircleImage">
+
+                        {%endif%}
+                        {%endfor%}
+                    </div>
+                    {%endfor%}
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+
+        <div class="flexAlign" style="width: 100%;" id="candidates">
+            <div class="category" onclick="toggleVisibility('candidate-container')">
+                Kandidater
+            </div>
+            <div style="width: 100%;display:none" class="flexAlign" id="candidate-container">
+                {%for i in range(0, subcategory["candidates"]|length)%}
+                <div class="candidateContainerSummary"
+                    onclick="toggleVisibility('candidate-{{i}}')">
+                    <div>
+                        <img src="{{url_for('static', filename='images/' + subcategory['candidates'][i]['pfp'])}}"
+                            class="radioCircleImage" style="display: block;width:90px;height:90px" alt="">
+                    </div>
+                    <p style="color:white;margin-left:20px" class="whiteBtnText">
+                        {{subcategory["candidates"][i]["name"]}}
+                    </p>
+
+                </div>
+                <div style="width:90%;display:none" id="candidate-{{i}}">
+                    {%for j in range(0, subcategory["questions"]|length)%}
+                    <p class="bodyText" style="color: white; margin:0">
+                        {{j+1}}. {{subcategory["questions"][j]}}
+                    </p>
+                    <p class="bodyText" style="color:white;text-indent:1em;margin-top:0.2em">
+                        {{subcategory["candidates"][j]["answers"][i]["reason"]}}
+                    </p>
+                    {%endfor%}
+                </div>
+                {%endfor%}
+            </div>
         </div>
     </div>
-</div>
-{%endblock%}
+    {%endblock%}
 
-{%block fixedBottom%}
-<a href="{{url_for('home'}}"  id="bottomButton" class="flexAlign" style="width:50%;text-align:center">
-    <div>
-        <h1 class=".orangeButtonText" style="color: white;">Tillbaka till alla poster</h1>
-    </div>
-</a>
-{%endblock%}
+    {%block fixedBottom%}
+    <a href="{{url_for('home')}}" id="bottomButton" class="flexAlign">
+        <div>
+            <h1 class=".orangeButtonText" style="color: white;">Tillbaka till alla poster</h1>
+        </div>
+    </a>
+    {%endblock%}
