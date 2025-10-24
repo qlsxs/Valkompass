@@ -38,6 +38,9 @@
 
                         {%endif%}
                         {%endfor%}
+                        {%if session["score-" + url + "-" +id|string] is defined and session["score-" + url + "-" +id|string] == j+1%}
+                        <div class="radioCircle flexAlign" onclick="selectOption('{{url}}', {{i}}, {{id}})">Du</div>
+                        {%endif%}
                     </div>
                     {%endfor%}
                 </div>

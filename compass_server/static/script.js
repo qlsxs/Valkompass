@@ -89,9 +89,20 @@ function selectOption(cat, id, qnr) {
     updateSessionScore(cat, id, qnr)
 }
 
-function updateSessionScore(cat, id, qnr){
+function updateSessionScore(cat, score, qnr){
     // Stores whatever the user chose as session to display at the summary/if they go back to this page
-    
+    $.ajax({
+        type: "POST",
+        url: "/update_session_score",
+        data: JSON.stringify({"cat":cat, "score": score, "question_id":qnr}),
+        dataType: "json",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        error: (err) => {
+            console.log("Error:" +  err)
+        }
+    })
 }
 
 function revealReason(id) {

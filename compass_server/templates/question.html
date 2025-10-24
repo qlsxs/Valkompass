@@ -26,11 +26,20 @@
             {%else%}
             <div class="invisibleRadioCircle"></div>
             {%endif%}
+            {%if session["score-" + url + "-" +id|string] is defined and session["score-" + url + "-" +id|string] == i%}
+            <div class="radioCircle flexAlign" style="border-color: #FF642B;" onclick="selectOption('{{url}}', {{i}}, {{id}})">Du</div>
+            {%else%}
             <div class="radioCircle flexAlign" onclick="selectOption('{{url}}', {{i}}, {{id}})"></div>
-            {%for j in range(0, answers|length)%}
-            {%if answers[j]["value"] == i+1%}
+            {%endif%}
+            {%for j in range(0, candidates|length)%}
+            {%if candidates[j]["answer"]["value"] == i+1%}
+            {%if session["score-" + url + "-" +id|string] is defined%}
+            <img src="{{url_for('static', filename='images/' + candidates[j]['pfp'])}}" id="{{j}}"
+                class="radioCircleImage" style="display: block;" onclick="revealReason({{j}})">
+            {%else%}
             <img src="{{url_for('static', filename='images/' + candidates[j]['pfp'])}}" id="{{j}}"
                 class="radioCircleImage" onclick="revealReason({{j}})">
+            {%endif%}
 
             {%endif%}
             {%endfor%}
@@ -54,7 +63,12 @@
 {%block fixedBottom%}
 <a href="{{url_for('load_question', cat = url, id = id+1)}}" id="bottomButton" class="flexAlign">
     <div>
+        {%if session["score-" + url + "-" +id|string] is defined%}
+        <p id="orangeButton">Nästa</p>
+        {%else%}
+
         <p id="orangeButton">Skippa</p>
+        {%endif%}
     </div>
 </a>
 {%endblock%}

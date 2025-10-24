@@ -25,6 +25,8 @@ def load_category(cat):
 
 @app.route("/category/<cat>/questions/<id>")
 def load_question(cat, id):
+    if("scores" in session):
+        print(type(session["scores"]))
     if(not id.isnumeric() and not id == "last"):
         return redirect("/category/" + cat)
     else:
@@ -37,7 +39,8 @@ def load_question(cat, id):
             return redirect("/category/" + cat + "/summary")
         else:     
             answers = data.get_candidate_answers_for_question(cat, int(id))
-            return render_template("question.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat, answers = answers)
+            print(answers)
+            return render_template("question.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat)
 
 @app.route("/category/<cat>/summary")
 def show_summary(cat):
@@ -52,6 +55,13 @@ def load_candidate_profile(cat, id):
         return render_template("candidate.html", cat_name = subcategory["name"], questions = subcategory["questions"], candidate = candidate, url=cat)
     except:
         return redirect("/category/" + cat)
+    
+@app.route("/update_session_score", methods=["POST"])
+def update_session_score():
+    data = request.get_json()
+    key = "score" + "-" + str(data["cat"]) + "-" + str(data["question_id"])
+    session[key] = data["score"]
+    return "true"
 # @app.route("/newuser", methods=["GET", "POST"])
 # def newuser():
 #     if(request.method == "POST"):
