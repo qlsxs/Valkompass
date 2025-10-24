@@ -1,0 +1,54 @@
+{%extends "base.html"%}
+
+{%block backLink%}
+{{url_for('home')}}
+{%endblock%}
+
+{%block content%}
+<div id="subcategory-main-menu">
+    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
+
+    </div>
+    <div style="width: 100%;">
+        <div style="display: flex;flex-direction:row;align-items:center;">
+            <div>
+                <img src="{{url_for('static', filename='images/' + candidate['pfp'])}}" class="profilePicture" alt="">
+            </div>
+            <div class="" style="display:flex;flex-direction: column;">
+                <p style="color:white;margin:0;margin-left:20px" class="whiteBtnText">
+                    {{candidate["name"]}}
+                </p>
+                <p style="color:white;margin:5px;margin-left:20px" class="smallerText">Sökt post:
+                    <strong>{{cat_name}}</strong><br>F-{{candidate["year"]}}
+                </p>
+            </div>
+
+        </div>
+        <div style="width:90%;">
+            {%for j in range(0, questions|length)%}
+            <div class="questionDisplayProfile" onclick="toggleVisibility('question-{{j}}')">
+                <p class="orangeButtonText" style="color: white; margin:0;flex-grow:1">
+                    {{questions[j]}}
+                </p>
+                <div>
+                    <div class="arrow" style="width: 16px;height:16px;float:left"></div>
+                </div>
+            </div>
+            <div id="question-{{j}}" style="display: none;">
+                <p class="bodyText" style="color:white;margin-top:0.2em">
+                    {{candidate["answers"][j]["reason"]}}
+                </p>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+{%block fixedBottom%}
+<a href="{{url_for('load_category', cat = url)}}" id="bottomButton" class="flexAlign">
+    <div>
+        <h1 class=".orangeButtonText" style="color: white;">Tillbaka</h1>
+    </div>
+</a>
+{%endblock%}

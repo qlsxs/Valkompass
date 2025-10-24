@@ -43,6 +43,15 @@ def load_question(cat, id):
 def show_summary(cat):
     subcategory = data.get_subcategory(cat)
     return render_template("summary.html", subcategory = subcategory, url = cat)
+
+@app.route("/category/<cat>/candidate/<id>")
+def load_candidate_profile(cat, id):
+    subcategory = data.get_subcategory(cat)
+    try:
+        candidate = subcategory["candidates"][int(id)]
+        return render_template("candidate.html", cat_name = subcategory["name"], questions = subcategory["questions"], candidate = candidate, url=cat)
+    except:
+        return redirect("/category/" + cat)
 # @app.route("/newuser", methods=["GET", "POST"])
 # def newuser():
 #     if(request.method == "POST"):

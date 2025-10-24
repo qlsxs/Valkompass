@@ -36,7 +36,6 @@ body {
 #bottomDiv {
     position: fixed;
     bottom: 0;
-    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center
@@ -104,31 +103,6 @@ body {
 
 .pfp {
     border-radius: 50%;
-}
-
-.title {
-    font-family: "EB Garmond";
-    font-size: 48px;
-}
-
-.bodyText {
-    font-family: "Roboto";
-    font-size: 20px;
-}
-
-.orangeButtonText {
-    font-family: "Roboto SemiBold";
-    font-size: 24px;
-}
-
-.whiteBtnText {
-    font-family: "Roboto";
-    font-size: 24px;
-}
-
-.smallerText {
-    font-family: "Roboto";
-    font-size: 16px;
 }
 
 .optionMainDiv {
@@ -220,20 +194,134 @@ body {
     cursor: pointer;
 }
 
-@media(max-width:768px) {
-    #widthDiv {
-        width: 90%
-    }
+.arrow {
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg);
+
 }
 
-@media(max-width:1200px) {
-    #widthDiv {
-        width: 30%
-    }
+.questionDisplayProfile {
+    display: flex;
+    flex-direction: row;
+    user-select:none;
+    margin-top:36px;
+}
+.questionDisplayProfile:hover{
+    cursor: pointer;
 }
 
 @media(min-width:1200px) {
-    #widthDiv {
-        width: 30%
+
+    #widthDiv,
+    #bottomDiv {
+        width: 36%
+    }
+
+    .title {
+        font-family: "EB Garmond";
+        font-size: 48px;
+    }
+
+    .bodyText {
+        font-family: "Roboto";
+        font-size: 20px;
+    }
+
+    .orangeButtonText {
+        font-family: "Roboto SemiBold";
+        font-size: 24px;
+    }
+
+    .whiteBtnText {
+        font-family: "Roboto";
+        font-size: 24px;
+    }
+
+    .smallerText {
+        font-family: "Roboto";
+        font-size: 16px;
+    }
+
+    .profilePicture {
+        width: 128px;
+        height: 128px;
+    }
+}
+
+
+@media(max-width:1200px) {
+
+    #widthDiv,
+    #bottomDiv {
+        width: 40%
+    }
+
+    .title {
+        font-family: "EB Garmond";
+        font-size: 40px;
+    }
+
+    .bodyText {
+        font-family: "Roboto";
+        font-size: 17px;
+    }
+
+    .orangeButtonText {
+        font-family: "Roboto SemiBold";
+        font-size: 20px;
+    }
+
+    .whiteBtnText {
+        font-family: "Roboto";
+        font-size: 20px;
+    }
+
+    .smallerText {
+        font-family: "Roboto";
+        font-size: 13px;
+    }
+
+    .profilePicture {
+        width: 102px;
+        height: 102px;
+    }
+}
+
+@media(max-width:768px) {
+
+    #widthDiv,
+    #bottomDiv {
+        width: 70%
+    }
+
+    .title {
+        font-family: "EB Garmond";
+        font-size: 32px;
+    }
+
+    .bodyText {
+        font-family: "Roboto";
+        font-size: 13px;
+    }
+
+    .orangeButtonText {
+        font-family: "Roboto SemiBold";
+        font-size: 16px;
+    }
+
+    .whiteBtnText {
+        font-family: "Roboto";
+        font-size: 16px;
+    }
+
+    .smallerText {
+        font-family: "Roboto";
+        font-size: 11px;
+    }
+
+    .profilePicture {
+        width: 84px;
+        height: 84px;
     }
 }
