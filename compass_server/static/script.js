@@ -64,7 +64,7 @@ function calculateRadioRadius(id) {
     }
 }
 
-function selectOption(cat, id) {
+function selectOption(cat, id, qnr) {
     // This function is called when the user clicks on the radio button for score id on category cat. Reveals the candiate scores and updates individual choice
     // Reveal candidates
     let candidatePlacing = [].slice.call(document.getElementsByClassName("radioCircleImage"))
@@ -85,6 +85,13 @@ function selectOption(cat, id) {
             options[i].innerHTML = ""
         }
     }
+    document.getElementById("orangeButton").innerHTML = "Nästa"
+    updateSessionScore(cat, id, qnr)
+}
+
+function updateSessionScore(cat, id, qnr){
+    // Stores whatever the user chose as session to display at the summary/if they go back to this page
+    
 }
 
 function revealReason(id) {

@@ -7,7 +7,7 @@
 {%block content%}
 <div id="subcategory-main-menu">
     <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
-        <h1 id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</h1>
+        <p id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</p>
     </div>
     <div style="width: 100%;color:white;margin-bottom:50px" class="bodyText">
         {{question}}<br><br>
@@ -18,20 +18,20 @@
         {%for i in range(0,11)%}
         <div class="optionContainer">
             {%if i == 0%}
-            <div class="invisibleRadioCircle flexAlign bodyText">1</div>
+            <div class="invisibleRadioCircle flexAlign smallerText">1</div>
             {%elif i == 9%}
-            <div class="invisibleRadioCircle flexAlign bodyText">10</div>
+            <div class="invisibleRadioCircle flexAlign smallerText">10</div>
             {%elif i == 10%}
-            <div class="invisibleRadioCircle flexAlign bodyText">Annat</div>
+            <div class="invisibleRadioCircle flexAlign smallerText">Annat</div>
             {%else%}
             <div class="invisibleRadioCircle"></div>
             {%endif%}
-            <div class="radioCircle flexAlign" onclick="selectOption('{{url}}', {{i}})"></div>
+            <div class="radioCircle flexAlign" onclick="selectOption('{{url}}', {{i}}, {{id}})"></div>
             {%for j in range(0, answers|length)%}
             {%if answers[j]["value"] == i+1%}
-            <img src="{{url_for('static', filename='images/' + candidates[j]['pfp'])}}" id="{{j}}" class="radioCircleImage"
-                onclick="revealReason({{j}})">
-          
+            <img src="{{url_for('static', filename='images/' + candidates[j]['pfp'])}}" id="{{j}}"
+                class="radioCircleImage" onclick="revealReason({{j}})">
+
             {%endif%}
             {%endfor%}
         </div>
@@ -54,7 +54,7 @@
 {%block fixedBottom%}
 <a href="{{url_for('load_question', cat = url, id = id+1)}}" id="bottomButton" class="flexAlign">
     <div>
-        <h1 class=".orangeButtonText" style="color: white;">Nästa</h1>
+        <p id="orangeButton">Skippa</p>
     </div>
 </a>
 {%endblock%}

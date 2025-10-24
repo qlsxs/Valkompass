@@ -45,7 +45,6 @@ body {
     width: 90%;
     height: 100px;
     background-color: #FF642B;
-    border: 2px solid #000;
     text-align: center;
     border-radius: 50px / 50%;
     text-align: center;
@@ -95,6 +94,11 @@ body {
     flex-direction: row;
     margin-bottom: 10px;
     align-items: center;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 .candidate-list-div:hover {
@@ -113,7 +117,7 @@ body {
 
 .optionContainer {
     width: 7%;
-    margin-right: 9px
+    margin-right: 6px
 }
 
 .radioCircle {
@@ -126,9 +130,10 @@ body {
 
 .invisibleRadioCircle {
     width: 100%;
+    height: auto;
     aspect-ratio: 1/1;
     color: white;
-
+    margin: 0;
 }
 
 .radioCircleImage {
@@ -204,11 +209,18 @@ body {
 .questionDisplayProfile {
     display: flex;
     flex-direction: row;
-    user-select:none;
-    margin-top:36px;
+    user-select: none;
+    margin-top: 36px;
 }
-.questionDisplayProfile:hover{
+
+.questionDisplayProfile:hover {
     cursor: pointer;
+}
+
+#orangeButton {
+    font-size: 24px;
+    font-family: "Roboto SemiBold";
+    color: white
 }
 
 @media(min-width:1200px) {
@@ -292,7 +304,7 @@ body {
 
     #widthDiv,
     #bottomDiv {
-        width: 70%
+        width: 95%
     }
 
     .title {

@@ -7,7 +7,7 @@
 {%block content%}
 <div id="subcategory-main-menu">
     <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
-        <h1 id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</h1>
+        <p id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</p>
     </div>
     <div style="width: 100%;">
         <div class="flexAlign" style="width: 100%;" id="questions">
@@ -51,25 +51,33 @@
             </div>
             <div style="width: 100%;display:none" class="flexAlign" id="candidate-container">
                 {%for i in range(0, subcategory["candidates"]|length)%}
-                <div class="candidateContainerSummary"
-                    onclick="toggleVisibility('candidate-{{i}}')">
+                <div class="candidateContainerSummary" onclick="toggleVisibility('candidate-{{i}}')">
                     <div>
                         <img src="{{url_for('static', filename='images/' + subcategory['candidates'][i]['pfp'])}}"
                             class="radioCircleImage" style="display: block;width:90px;height:90px" alt="">
                     </div>
-                    <p style="color:white;margin-left:20px" class="whiteBtnText">
-                        {{subcategory["candidates"][i]["name"]}}
-                    </p>
+                    <div style="display:flex;flex-direction:row;align-items:center;width:80%">
+                        <div style="flex-grow: 1;">
+                            <p style="color:white;margin-left:20px" class="whiteBtnText">
+                                {{subcategory["candidates"][i]["name"]}}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="arrow" style="width: 10px; height:10px"></p>
+                        </div>
+                    </div>
 
                 </div>
                 <div style="width:90%;display:none" id="candidate-{{i}}">
                     {%for j in range(0, subcategory["questions"]|length)%}
-                    <p class="bodyText" style="color: white; margin:0">
-                        {{j+1}}. {{subcategory["questions"][j]}}
-                    </p>
-                    <p class="bodyText" style="color:white;text-indent:1em;margin-top:0.2em">
-                        {{subcategory["candidates"][j]["answers"][i]["reason"]}}
-                    </p>
+                    <div style="margin-top: 24px; margin-bottom:24px">
+                        <p class="bodyText" style="color: white; margin:0">
+                            {{j+1}}. {{subcategory["questions"][j]}}
+                        </p>
+                        <p class="bodyText" style="color:white;text-indent:1em;margin-top:0.2em">
+                            {{subcategory["candidates"][j]["answers"][i]["reason"]}}
+                        </p>
+                    </div>
                     {%endfor%}
                 </div>
                 {%endfor%}
@@ -81,7 +89,7 @@
     {%block fixedBottom%}
     <a href="{{url_for('home')}}" id="bottomButton" class="flexAlign">
         <div>
-            <h1 class=".orangeButtonText" style="color: white;">Tillbaka till alla poster</h1>
+            <p id="orangeButton">Tillbaka till alla poster</p>
         </div>
     </a>
     {%endblock%}

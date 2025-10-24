@@ -1,7 +1,7 @@
 {%extends "base.html"%}
 
 {%block backLink%}
-{{url_for('home')}}
+{{url_for('load_category', cat = url)}}
 {%endblock%}
 
 {%block content%}
@@ -48,7 +48,7 @@
 {%block fixedBottom%}
 <a href="{{url_for('load_category', cat = url)}}" id="bottomButton" class="flexAlign">
     <div>
-        <h1 class=".orangeButtonText" style="color: white;">Tillbaka</h1>
+        <p id="orangeButton">Tillbaka</p>
     </div>
 </a>
 {%endblock%}
