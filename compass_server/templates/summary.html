@@ -33,12 +33,12 @@
                         <div class="radioCircle flexAlign"></div>
                         {%for candidate in subcategory["candidates"]%}
                         {%if candidate["answers"][i]["value"] == j+1%}
-                        <img src="{{url_for('static', filename='images/' + candidate['pfp'])}}" style="display:block"
+                        <img src="{{url_for('static', filename='images/pfp/' + candidate['pfp'])}}" style="display:block"
                             class="radioCircleImage">
 
                         {%endif%}
                         {%endfor%}
-                        {%if session["score-" + url + "-" +id|string] is defined and session["score-" + url + "-" +id|string] == j+1%}
+                        {%if session["score-" + url + "-" +i|string] is defined and session["score-" + url + "-" +i|string] == j%} <!-- For some reason i decided to shift this one by 1-->
                         <div class="radioCircle flexAlign" onclick="selectOption('{{url}}', {{i}}, {{id}})">Du</div>
                         {%endif%}
                     </div>
@@ -56,7 +56,7 @@
                 {%for i in range(0, subcategory["candidates"]|length)%}
                 <div class="candidateContainerSummary" onclick="toggleVisibility('candidate-{{i}}')">
                     <div>
-                        <img src="{{url_for('static', filename='images/' + subcategory['candidates'][i]['pfp'])}}"
+                        <img src="{{url_for('static', filename='images/pfp/' + subcategory['candidates'][i]['pfp'])}}"
                             class="radioCircleImage" style="display: block;width:90px;height:90px" alt="">
                     </div>
                     <div style="display:flex;flex-direction:row;align-items:center;width:80%">
@@ -90,7 +90,7 @@
     {%endblock%}
 
     {%block fixedBottom%}
-    <a href="{{url_for('home')}}" id="bottomButton" class="flexAlign">
+    <a href="{{url_for('home')}}" class="flexAlign bottomButton">
         <div>
             <p id="orangeButton">Tillbaka till alla poster</p>
         </div>

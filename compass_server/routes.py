@@ -38,8 +38,6 @@ def load_question(cat, id):
         elif(question == "Max"):
             return redirect("/category/" + cat + "/summary")
         else:     
-            answers = data.get_candidate_answers_for_question(cat, int(id))
-            print(answers)
             return render_template("question.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat)
 
 @app.route("/category/<cat>/summary")

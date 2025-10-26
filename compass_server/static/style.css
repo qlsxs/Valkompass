@@ -15,6 +15,7 @@
 
 a {
     color: #FF642B;
+    text-decoration: none;
 }
 
 body {
@@ -35,13 +36,13 @@ body {
 
 #bottomDiv {
     position: fixed;
-    bottom: 0;
+    bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center
 }
 
-#bottomButton {
+.bottomButton {
     width: 90%;
     height: 100px;
     background-color: #FF642B;
@@ -95,10 +96,6 @@ body {
     margin-bottom: 10px;
     align-items: center;
     user-select: none;
-}
-
-a {
-    text-decoration: none;
 }
 
 .candidate-list-div:hover {

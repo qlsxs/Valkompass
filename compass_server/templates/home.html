@@ -10,7 +10,9 @@
         <p style="color: white;align-self:center;" class="title">Valkompassen</p>
         <div id="categoriesList" class="flexAlign" style="width: 100%;">
             {%for i in range(0, categories|length)%}
-            {%if categories[i]["src"] == "#"%}
+            {%if i == categories|length-2%} <!-- Revisor-->
+            <a href="{{url_for('load_category', cat = categories[i+1]['src'])}}" id="{{i}}" class="category"><div style="color:black">{{categories[i]["name"]}}</div></a>
+            {%elif categories[i]["src"] == "#"%}
             <div class="category" onclick="toggleShownSubcategories({{categories[i]['id']}})" id="{{i}}">{{categories[i]["name"]}}</div>
             {%else%}
             <a href="{{url_for('load_category', cat = categories[i]['src'])}}" class="category subcategory" style="display: none;">
@@ -25,7 +27,7 @@
 {%endblock%}
 
 {%block fixedBottom%}
-    <div id="bottomButton" class="flexAlign">
+    <div class="flexAlign bottomButton">
         <p id="orangeButton">Slumpad post</p>
     </div>
 {%endblock%}

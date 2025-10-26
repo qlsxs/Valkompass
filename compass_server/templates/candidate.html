@@ -12,7 +12,7 @@
     <div style="width: 100%;">
         <div style="display: flex;flex-direction:row;align-items:center;">
             <div>
-                <img src="{{url_for('static', filename='images/' + candidate['pfp'])}}" class="profilePicture" alt="">
+                <img src="{{url_for('static', filename='images/pfp/' + candidate['pfp'])}}" class="profilePicture" alt="pfp">
             </div>
             <div class="" style="display:flex;flex-direction: column;">
                 <p style="color:white;margin:0;margin-left:20px" class="whiteBtnText">
@@ -46,7 +46,7 @@
 {%endblock%}
 
 {%block fixedBottom%}
-<a href="{{url_for('load_category', cat = url)}}" id="bottomButton" class="flexAlign">
+<a href="{{url_for('load_category', cat = url)}}" class="flexAlign bottomButton">
     <div>
         <p id="orangeButton">Tillbaka</p>
     </div>

@@ -1,40 +1,58 @@
-{%extends "base.html"%}
+<!DOCTYPE html>
+<html lang="en">
 
-{%block title%}Index{%endblock%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='data.js')}}"></script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</head>
 
-{%block headerBlock%}
-<h1 class="display-3">Välkommen till forumet!</h1>
-{%endblock%}
+<body>
+    <div style="display: flex; justify-content:center;align-items:center;flex-direction:column">
+        <div id="widthDiv">
+            <nav style="width:100%">
+                <div style="width:100%; display:flex">
+                    <div style="flex-grow:1;display:flex;align-items:center">
+                        <a href="{%block backLink%}{%endblock%}"><img
+                                src="{{url_for('static', filename='images/back3.png')}}" style="width: 42px;height:42px"
+                                alt="Back"></a>
+                    </div>
+                    <div style="flex-grow:1;display:flex;align-items:center;justify-content:end">
+                        <a href="{{url_for('home')}}"><img
+                                src="{{url_for('static', filename='images/FrakturF2020.png')}}"
+                                style="width: 42px;height:42px" alt=""></a>
+                    </div>
+                </div>
+            </nav>
+            <div id="subcategory-main-menu">
+                <div
+                    style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
+                    <p id="subcategory-title" class="title" style="color:white;">Valkompassen</p>
+                </div>
+                <div style="width: 100%;color:white">
+                    <p class="bodyText">Välkommen till valkompassen för fysiksektionens sektionsval 2025!</p>
+                    <p class="bodyText">Valkompassen fungerar...</p>
+                </div>
+                <div id="invisibleFillerDiv"></div>
+                <div id="bottomDiv" class="flexAlign" style="flex-direction: column;">
+                    <a href="/#" class="flexAlign bottomButton" style="margin-bottom:24px"> <!--Link to FINT-->
+                        <div>
+                            <p id="orangeButton">International student? <br>Press here!</p>
+                        </div>
+                    </a>
+                    <a href="{{url_for('home')}}" class="flexAlign bottomButton">
+                        <div>
+                            <p id="orangeButton">Nästa</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-{%block content%}
-<div class="d-flex align-content-center justify-content-center mt-5">
-    <form method="POST" action="{{url_for('login')}}">
-        {{form.hidden_tag()}}
-        <p>{{form.username.label}} <br>
-            {{form.username(class_="form-control")}}
-            {%if form.username.errors %}
-            {%for error in form.username.errors%}
-            <br>{{error}}
-            {%endfor%}
-            {%endif%}
-        </p>
-        <p>{{form.password.label}} <br>
-            {{form.password(class_="form-control")}}
-            {%if form.password.errors %}
-            {%for error in form.password.errors%}
-            <br>{{error}}
-            {%endfor%}
-            {%endif%}
-        </p>
-        <p>
-            {{form.submit(class_="form-control")}}
-            {%if form.submit.errors %}
-            {%for error in form.submit.errors%}
-            <br>{{error}}
-            {%endfor%}
-            {%endif%}
-        </p>
-
-    </form>
-</div>
-{%endblock%}
+</html>
