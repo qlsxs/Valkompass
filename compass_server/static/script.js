@@ -89,18 +89,18 @@ function selectOption(cat, id, qnr) {
     updateSessionScore(cat, id, qnr)
 }
 
-function updateSessionScore(cat, score, qnr){
+function updateSessionScore(cat, score, qnr) {
     // Stores whatever the user chose as session to display at the summary/if they go back to this page
     $.ajax({
         type: "POST",
         url: "/update_session_score",
-        data: JSON.stringify({"cat":cat, "score": score, "question_id":qnr}),
+        data: JSON.stringify({ "cat": cat, "score": score, "question_id": qnr }),
         dataType: "json",
         headers: {
             'Content-Type': 'application/json'
         },
         error: (err) => {
-            console.log("Error:" +  err)
+            console.log("Error:" + err)
         }
     })
 }
@@ -119,7 +119,7 @@ function revealReason(id) {
     reasonDiv.style.width = rect2.right - rect2.left + "px"
     reasonDiv.style.top = y + 16.143 + "px"
     reasonDiv.style.setProperty("--speechBubbleTriangleLeft", x + "px")
-    
+
     let div1 = document.createElement("div")
     let div2 = document.createElement("div")
     div1.style.flexGrow = 3
@@ -130,7 +130,7 @@ function revealReason(id) {
     img.id = "speechBubbleReasonImage"
     let info = document.createElement('p')
     info.classList.add("bodyText")
-    info.innerHTML = "<strong>" + document.getElementById(id + "-name").innerHTML +"</strong><br>" +  document.getElementById(id + "-reason").innerHTML
+    info.innerHTML = "<strong>" + document.getElementById(id + "-name").innerHTML + "</strong><br>" + document.getElementById(id + "-reason").innerHTML
     info.style.flexGrow = 1
     info.style.color = "white"
     div1.append(img)
@@ -153,13 +153,70 @@ function removeReasonMenu(e) {
     }
 }
 
-function toggleVisibility(id){
+function toggleVisibility(id) {
     let elem = document.getElementById(id)
-    if(elem.style.display === "none"){
+    if (elem.style.display === "none") {
         elem.style.display = ""
     }
-    else{
+    else {
         elem.style.display = "none"
     }
 }
 
+function openLangMenu(id) {
+    // opens the menu on the index page where you can select language
+    let elem
+    let measurements
+    let lang
+    if (id === 0) {
+        elem = document.getElementById("flag-en")
+        measurements = document.getElementById("flag-se").getBoundingClientRect()
+        lang = "en"
+    }
+    else if (id === 1) {
+        elem = document.getElementById("flag-se")
+        measurements = document.getElementById("flag-en").getBoundingClientRect()
+        lang = "se"
+    }
+    if (elem !== undefined) {
+        copy = elem.cloneNode();
+        copy.id = "langSelection"
+        copy.style.left = measurements.left + "px"
+        copy.style.top = measurements.top + 52 + "px"
+        copy.style.display = "block"
+        document.body.append(copy)
+        $(copy).one('click', ((e) => {
+            let listEn = [].slice.call(document.getElementsByClassName("eng"))
+            let listSe = [].slice.call(document.getElementsByClassName("swe"))
+            if (lang == "en") {
+                document.getElementById("subcategory-title")
+                for (let i = 0; i < listEn.length; i++) {
+                    listEn[i].style.display = "block"
+                }
+                for (let i = 0; i < listSe.length; i++) {
+                    listSe[i].style.display = "none"
+
+                }
+            }
+            if (lang == "se") {
+                for (let i = 0; i < listEn.length; i++) {
+                    listEn[i].style.display = "none"
+                }
+                for (let i = 0; i < listSe.length; i++) {
+                    listSe[i].style.display = "block"
+
+                }
+            }
+        }))
+        setTimeout(() => $(document).one('click', ((e) => { removeLangMenu(e) })), 10)
+
+    }
+}
+
+function removeLangMenu(e) {
+    const elem = document.getElementById("langSelection");
+    if (elem !== null) {
+        elem.remove()
+        elem.remove()
+    }
+}

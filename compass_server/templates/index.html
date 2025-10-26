@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="{{url_for('static', filename='data.js')}}"></script>
     <script src="{{url_for('static', filename='script.js')}}"></script>
 </head>
 
@@ -16,10 +15,28 @@
         <div id="widthDiv">
             <nav style="width:100%">
                 <div style="width:100%; display:flex">
-                    <div style="flex-grow:1;display:flex;align-items:center">
-                        <a href="{%block backLink%}{%endblock%}"><img
-                                src="{{url_for('static', filename='images/back3.png')}}" style="width: 42px;height:42px"
-                                alt="Back"></a>
+                    <div style="flex-grow:1">
+                        <div>
+                            <div class="swe">
+                                <div class="langDiv" onclick="openLangMenu(0)">
+                                    <img src="{{url_for('static', filename='images/flag_se.jpg')}}" style="height:42px"
+                                        alt="Back" id="flag-se">
+                                    <div class="arrow"
+                                        style="margin-left:10px;margin-bottom:10px;width:10px;height:10px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="eng">
+                                <div style="display:flex;align-items:center;flex-direction:row" onclick="openLangMenu(1)">
+                                <img src="{{url_for('static', filename='images/flag_en.jpg')}}" style="height:42px"
+                                    alt="Back" id="flag-en">
+                                <div class="arrow" style="margin-left:10px;margin-bottom:10px;width:10px;height:10px">
+                                </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                     <div style="flex-grow:1;display:flex;align-items:center;justify-content:end">
                         <a href="{{url_for('home')}}"><img
@@ -31,22 +48,30 @@
             <div id="subcategory-main-menu">
                 <div
                     style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
-                    <p id="subcategory-title" class="title" style="color:white;">Valkompassen</p>
+                    <p id="" class="title swe" style="color:white;">Valkompassen</p>
+                    <p id="" class="title eng" style="color:white;">Election Compass</p>
                 </div>
                 <div style="width: 100%;color:white">
-                    <p class="bodyText">Välkommen till valkompassen för fysiksektionens sektionsval 2025!</p>
-                    <p class="bodyText">Valkompassen fungerar...</p>
+                    <div class="swe">
+                        <p class="bodyText">Välkommen till valkompassen för fysiksektionens sektionsval 2025!</p>
+                        <p class="bodyText">Valkompassen fungerar...</p>
+                    </div>
+                    <div class="eng">
+                        <p class="bodyText">Text in english ...</p>
+                        <p class="bodyText">More english text</p>
+                    </div>
                 </div>
                 <div id="invisibleFillerDiv"></div>
                 <div id="bottomDiv" class="flexAlign" style="flex-direction: column;">
-                    <a href="/#" class="flexAlign bottomButton" style="margin-bottom:24px"> <!--Link to FINT-->
+                    <a href="{{url_for('load_category', cat = 'fint-president')}}" class="flexAlign bottomButton" style="margin-bottom:24px"> <!--Link to FINT-->
                         <div>
-                            <p id="orangeButton">International student? <br>Press here!</p>
+                            <p class="orangeButton">International student? <br>Press here!</p>
                         </div>
                     </a>
                     <a href="{{url_for('home')}}" class="flexAlign bottomButton">
                         <div>
-                            <p id="orangeButton">Nästa</p>
+                            <p class="orangeButton swe">Nästa</p>
+                            <p class="orangeButton eng">Next (only in swedish)</p>
                         </div>
                     </a>
                 </div>

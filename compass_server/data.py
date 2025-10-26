@@ -128,7 +128,7 @@ subCategories = [
         {
             "name": "Fadderist",
             "desc": "Fadderisterna är ansvariga för att arrangera sektionens mottagning, de två veckorna i augusti då vi välkomnar alla nyantagna. De har också en teatral roll under mottagningen där de är lite roliga och spexiga.",
-            "src": "temp",
+            "src": "mottagningen-fadderist",
             "amount": 4,
         }
     ],
@@ -136,7 +136,7 @@ subCategories = [
         {
             "name": "Klubbmästare",
             "desc": "Klubbmästarna är ordförande, vice och kassör för klubbmästeriet fkm*. Det innebär att de ansvarar för att arrangera regelbundna pubar och sittningar och ansvarar för all alkoholförsäljning i konsulatet. De rekryterar och leder också alla underansvariga i fkm* som har hand om dekor, mat, märken och dryck på pubar och gasquer.",
-            "src": "temp",
+            "src": "fkm-klubbmastare",
             "amount": 3,
         }
     ],
@@ -144,19 +144,19 @@ subCategories = [
         {
             "name": "SNO",
             "desc": "SNO är ordförande för för studienämnden FSN. Hen sköter det administrativa arbetet i studienämnden och representerar sektionens studenter och deras åsikter mot KTH. SNO fixar också event för studienämnden och har en överblick över deras arbete.",
-            "src": "temp",
+            "src": "fsn-sno",
             "amount": 1,
         },
         {
             "name": "F-PAS",
             "desc": "F-PAS är programansvarig student för teknisk fysik och ansvarar därför för kontakt mellan fysikstudenterna och programledningen och examinatorerna när det kommer till studiefrågor. Hen ser till att fysikstudenternas röst hörs när programmet utvecklas.",
-            "src": "temp",
+            "src": "fsn-fpas",
             "amount": 1,
         },
         {
             "name": "TM-PAS",
             "desc": "TM-PAS är programansvarig student för teknisk matematik och ansvarar därför för kontakt mellan mattestudenterna och programledningen och examinatorerna när det kommer till studiefrågor. Hen ser också till att mattestudenternas röst hörs när programmet utvecklas. ",
-            "src": "temp",
+            "src": "fsn-tmpas",
             "amount": 1,
         }
     ],
@@ -164,7 +164,7 @@ subCategories = [
         {
             "name": "Stabsledningen",
             "desc": "Stabsledningen är ordförande, vice och kassör för Fysikalen, sektionens så kallade spex (studentikosa musikalteater). De har ansvar för att rekrytera alla gruppchefer som tillsammans leder och skapar spexet. De väljs vartannat år och sitter i två år.",
-            "src": "temp",
+            "src": "fysikalen-stabsledning",
             "amount": 3,
         }
     ],
@@ -172,7 +172,7 @@ subCategories = [
         {
             "name": "Ordförande",
             "desc": "Ordförande för aktivitetsnämnden (oFAN) ansvarar för att leda FAN i sitt arbete genom att bl.a. rekrytera underansvariga som fixar små regelbundna aktiviteter och fixa större event som t.ex.  Åreresan och PAFF.",
-            "src": "temp",
+            "src": "fan-ordforande",
             "amount": 1,
         }
     ],
@@ -180,7 +180,7 @@ subCategories = [
         {
             "name": "Ordförande",
             "desc": "Jämlikhetsnämndens ordförande (oJämN) är delvis ansvarig för jämlikhetsarbetet på sektionen och leder jämlikhetsnämndens arbete genom att bl.a. rekrytera underansvariga, hålla lunchmöten och planera aktiviteter som har med jämlikhet att göra.",
-            "src": "temp",
+            "src": "jamn-ojamn",
             "amount": 1,
         }
     ],
@@ -188,13 +188,13 @@ subCategories = [
         {
             "name": "GK (Ordförande)",
             "desc": "GK (Generalkonsul) är ordförande för lokalnämnden FRum. Hen är ansvarig för vår sektionslokal konsulatet och leder tillsammans med CdA FRums arbete genom bl.a. lunchmöten, städdagar och internevent. De rekryterar också underansvariga som bl.a. har ansvar för sektionsbilen.",
-            "src": "temp",
+            "src": "frum-gk",
             "amount": 1,
         },
         {
             "name": "CDA (Kassör)",
             "desc": "CdA (Chargé d’Affaires) är kassör för lokalnämnden FRum och ansvarig för godisskåpet i konsulatet. Hen leder tillsammans med GK FRums arbete genom bl.a. lunchmöten, städdagar och internevent. De rekryterar också underansvariga som bl.a. har ansvar för sektionsbilen.",
-            "src": "temp",
+            "src": "frum-cda",
             "amount": 1,
         }
     ],
@@ -202,7 +202,7 @@ subCategories = [
         {
             "name": "President",
             "desc": "FINTo is the head of the international organization in the chapter. They organize meetings, keep in contact with the administration and lead FINT in its day to day work. They are also responsible for the international reception for all exchange students coming to the physics chapter. ",
-            "src": "temp",
+            "src": "fint-president",
             "amount": 0,
         }
     ],
@@ -210,25 +210,25 @@ subCategories = [
         {
             "name": "Ordförande",
             "desc": "Fcoms ordförande ansvarar för att samordna Fcom och dess delnämnder, The Force, F.Dev och FArt som tillsammans har hand om sektionens kommunikation och informationsspridning. Hen är också ansvarig för generella sektionsmärken, ovverallerna och sångboken.",
-            "src": "temp",
+            "src": "fcom-ordforande",
             "amount": 1,
         },
         {
             "name": "Webmaster",
             "desc": "Webmaster är ansvarig för programmeringsgruppen F.Dev som har programmeringsmöten där de ibland jobbar på olika projekt åt resten av sektionen. Webmaster är också ansvarig för sektionens webbplats.",
-            "src": "temp",
+            "src": "fcom-webmaster",
             "amount": 1,
         },
         {
             "name": "Redaktör",
             "desc": "Redaktören är ansvarig för sektionstidningen The Force. Hen har hand om att strukturera och publicera tidningen och göra den underhållande både för de som gör den och de som läser.",
-            "src": "temp",
+            "src": "fcom-redaktor",
             "amount": 1,
         },
         {
             "name": "Designansvarig",
             "desc": "Designansvarig är ansvarig för designgruppen FArt som fixar märken och annan grafik och grafisk profil till resten av sektionen.",
-            "src": "temp",
+            "src": "fcom-design",
             "amount": 1,
         },
     ],
@@ -236,25 +236,25 @@ subCategories = [
         {
             "name": "Ordförande",
             "desc": "Generalsekreteraren är ordförande för näringslivsnämnden FN och leder deras allmänna arbete genom att bl.a. hålla möten, rekrytera underansvariga och ansvarar för annan operativ verksamhet.",
-            "src": "temp",
+            "src": "fn-ordforande",
             "amount": 1,
         },
         {
             "name": "Kassör",
             "desc": "FNs kassör är ansvarig för näringslivsnämnden FNs ekonomi och har därför hand om deras budget och ser till att allt bokförs och dokumenteras rätt. FN är en av sektionens större inkomstkällor så det är ett stort ansvar. Hen hjälper också FNs ordförande i att leda nämnden.",
-            "src": "temp",
+            "src": "fn-kassor",
             "amount": 1,
         },
         {
             "name": "Portföljförvaltare",
             "desc": "Portföljförvaltaren ansvarar för sektionens kapitalförvaltning (aktiefond) och leder gruppen F.Cap i att bestämma vilka investeringar som ska göras och inte.",
-            "src": "temp",
+            "src": "fn-portsfoljforvaltare",
             "amount": 1,
         },
         {
             "name": "Fusionsreaktor",
             "desc": "Fusionsreaktorn är samordnare och arrangör för fysiksektionens arbetsmarknadsmässa FUSION. Det innebär att de rekryterar underansvariga och har en överblick under arbetet med att skapa mässan.",
-            "src": "temp",
+            "src": "fn-fusionsreaktor",
             "amount": 1,
         }
     ],
@@ -262,7 +262,7 @@ subCategories = [
         {
             "name": "Arrangör",
             "desc": "Vårbalsarrnagörerna, som det låter, arrangerar vårbalen, sektionens stora finsittning under våren. Det innebär att de planerar, bestämmer tema, rekryterar underansvariga och jobbare och har en överblick och leder arbetet för att se till att sektionen får en lyckad vårbal.",
-            "src": "temp",
+            "src": "varbal-arrangor",
             "amount": 3,
         }
     ],
@@ -270,7 +270,7 @@ subCategories = [
         {
             "name": "SPECIAL",
             "desc": "Revisorerna ska ha koll på sektionens styrdokument och granska och stötta styrelsen och resten av sektionen i deras arbete kring det. Eftersom de ska vara granskande av sektionens arbete är revisorer ofta alumner som inte längre har en särskilt stark koppling till resten av sektionens funktionärer och arbete.",
-            "src": "temp",
+            "src": "revisor-revisor",
             "amount": 2,
         }
     ],

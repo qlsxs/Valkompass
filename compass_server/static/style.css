@@ -214,10 +214,31 @@ body {
     cursor: pointer;
 }
 
-#orangeButton {
+.orangeButton {
     font-size: 24px;
     font-family: "Roboto SemiBold";
     color: white
+}
+
+.eng {
+    display: none;
+}
+
+#langSelection {
+    position: absolute;
+}
+
+#langSelection:hover{
+    cursor: pointer;
+}
+
+.langDiv {
+    display: flex;
+    align-items: center;
+    flex-direction: row
+}
+.langDiv:hover{
+    cursor: pointer;
 }
 
 @media(min-width:1200px) {
