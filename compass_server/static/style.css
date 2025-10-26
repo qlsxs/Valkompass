@@ -355,3 +355,41 @@ body {
         height: 84px;
     }
 }
+
+@media(max-width:480px) {
+
+    #widthDiv,
+    #bottomDiv {
+        width: 95%
+    }
+
+    .title {
+        font-family: "EB Garmond";
+        font-size: 32px;
+    }
+
+    .bodyText {
+        font-family: "Roboto";
+        font-size: 13px;
+    }
+
+    .orangeButtonText {
+        font-family: "Roboto SemiBold";
+        font-size: 16px;
+    }
+
+    .whiteBtnText {
+        font-family: "Roboto";
+        font-size: 16px;
+    }
+
+    .smallerText {
+        font-family: "Roboto";
+        font-size: 11px;
+    }
+
+    .profilePicture {
+        width: 84px;
+        height: 84px;
+    }
+}
