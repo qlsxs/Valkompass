@@ -82,7 +82,7 @@ sub_categories = [
                     "name": "Förnamn Efternamn 1",
                     "year": 22,
                     "pfp": "image.png",
-                    "answers": [{"value": 3, "reason": "bla bbla bla"}, {"value": 1, "reason": "badsfla bbla bla"}, {"value": 5, "reason": "bla bbla asdfbla"}]
+                    "answers": [{"value": 3, "reason": "bla bblfhjdioash jfoisdhfhsd jfoisdhfhsd jfoisdhfhsd jfoisdhfhsd jfoisdhfhsd jfoisdhfhsd jfoisdhfhsd jfoisdhfhsdjfoisdhfhsd jfoisdhf hsdjfoisd hfhsdjfoisdhfhsd ouha bla"}, {"value": 1, "reason": "badsfla bbla bla"}, {"value": 5, "reason": "bla bbla asdfbla"}]
                 },
                 {
                     "name": "Förnamn Efternamn 2",

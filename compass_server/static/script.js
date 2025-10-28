@@ -128,6 +128,9 @@ function revealReason(id) {
     let img = document.createElement('img')
     img.src = document.getElementById(id + "-img").src
     img.id = "speechBubbleReasonImage"
+    div1.classList.add("speechBubbleDiv")
+    div2.classList.add("speechBubbleDiv")
+    reasonDiv.classList.add("speechBubbleDiv")
     let info = document.createElement('p')
     info.classList.add("bodyText")
     info.innerHTML = "<strong>" + document.getElementById(id + "-name").innerHTML + "</strong><br>" + document.getElementById(id + "-reason").innerHTML
@@ -145,7 +148,7 @@ function revealReason(id) {
 function removeReasonMenu(e) {
     const menu = document.getElementById("speechBubbleReason")
     const closest = e.target.closest("div")
-    if (menu !== null && closest == null || closest.id !== "speechBubbleReason") {
+    if (menu !== null && closest == null || !closest.classList.contains("speechBubbleDiv")) {
         menu.remove()
     }
     else {

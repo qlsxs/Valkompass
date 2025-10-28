@@ -150,6 +150,14 @@ body {
     cursor: pointer;
 }
 
+#titleDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px
+}
+
 #speechBubbleReason {
     position: absolute;
     background-color: #231F20;
@@ -228,7 +236,7 @@ body {
     position: absolute;
 }
 
-#langSelection:hover{
+#langSelection:hover {
     cursor: pointer;
 }
 
@@ -237,7 +245,8 @@ body {
     align-items: center;
     flex-direction: row
 }
-.langDiv:hover{
+
+.langDiv:hover {
     cursor: pointer;
 }
 
@@ -354,42 +363,12 @@ body {
         width: 84px;
         height: 84px;
     }
-}
 
-@media(max-width:480px) {
-
-    #widthDiv,
-    #bottomDiv {
-        width: 95%
+    .bottomButton {
+        height: 80px
     }
 
-    .title {
-        font-family: "EB Garmond";
-        font-size: 32px;
-    }
-
-    .bodyText {
-        font-family: "Roboto";
-        font-size: 13px;
-    }
-
-    .orangeButtonText {
-        font-family: "Roboto SemiBold";
-        font-size: 16px;
-    }
-
-    .whiteBtnText {
-        font-family: "Roboto";
-        font-size: 16px;
-    }
-
-    .smallerText {
-        font-family: "Roboto";
-        font-size: 11px;
-    }
-
-    .profilePicture {
-        width: 84px;
-        height: 84px;
+    .orangeButton {
+        font-size: 20px;
     }
 }

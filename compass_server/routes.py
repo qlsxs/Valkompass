@@ -23,11 +23,11 @@ def load_category(cat):
 
 @app.route("/category/<cat>/questions/<id>")
 def load_question(cat, id):
-    if("scores" in session):
-        print(type(session["scores"]))
-    if(not id.isnumeric()):
+    if(not id.isnumeric() and not id == "-1"):
         return abort(404)
     else:
+        if(id == "-1"):
+            return redirect(url_for("load_category", cat = cat))
         subcategory, candidates, question, id = data.get_data_for_question(cat, int(id))
         if(subcategory == None):
             return abort(404)
