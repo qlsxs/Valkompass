@@ -1,7 +1,7 @@
 {%extends "base.html"%}
 
 {%block backLink%}
-{{url_for('load_question', cat = url, id = "last")}}
+{{url_for('load_question', cat = url, id = subcategory["questions"]|length-1)}}
 {%endblock%}
 
 {%block content%}

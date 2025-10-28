@@ -1,7 +1,5 @@
 from compass_server import app
-from flask import request, session, flash, redirect, url_for, render_template, abort
-import os, json
-import uuid
+from flask import request, session, redirect, url_for, render_template, abort
 import compass_server.data as data
 
 @app.route("/")
@@ -17,7 +15,7 @@ def home():
 def load_category(cat):
     subcategory = data.get_subcategory(cat)
     if(subcategory == None):
-        return redirect("/home")
+        return abort(404)
     candidates = []
     for cand in subcategory["candidates"]:
         candidates.append({"name": cand["name"], "year": cand["year"], "pfp": cand["pfp"]})
@@ -27,22 +25,22 @@ def load_category(cat):
 def load_question(cat, id):
     if("scores" in session):
         print(type(session["scores"]))
-    if(not id.isnumeric() and not id == "last"):
-        return redirect("/category/" + cat)
+    if(not id.isnumeric()):
+        return abort(404)
     else:
-        if(id == "last"):
-            id = -1
         subcategory, candidates, question, id = data.get_data_for_question(cat, int(id))
         if(subcategory == None):
-            return redirect("/home")
+            return abort(404)
         elif(question == "Max"):
-            return redirect("/category/" + cat + "/summary")
+            return redirect(url_for("show_summary", cat = cat))
         else:     
             return render_template("question.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat)
 
 @app.route("/category/<cat>/summary")
 def show_summary(cat):
     subcategory = data.get_subcategory(cat)
+    if(subcategory == None):
+        return abort(404)
     return render_template("summary.html", subcategory = subcategory, url = cat)
 
 @app.route("/category/<cat>/candidate/<id>")
@@ -52,7 +50,7 @@ def load_candidate_profile(cat, id):
         candidate = subcategory["candidates"][int(id)]
         return render_template("candidate.html", cat_name = subcategory["name"], questions = subcategory["questions"], candidate = candidate, url=cat)
     except:
-        return redirect("/category/" + cat)
+        return abort(404)
     
 @app.route("/update_session_score", methods=["POST"])
 def update_session_score():
@@ -60,27 +58,7 @@ def update_session_score():
     key = "score" + "-" + str(data["cat"]) + "-" + str(data["question_id"])
     session[key] = data["score"]
     return "true"
-# @app.route("/newuser", methods=["GET", "POST"])
-# def newuser():
-#     if(request.method == "POST"):
-#         name = request.form["username"]
-#         if(username_exists(name)):
-#             flash("Användarnamet är upptaget!", "warning")
-#             return render_template("createuser.html", form = SignUpForm())
-#         password = request.form["password"]
-#         password_hash = bcrypt.generate_password_hash(password, __ROUNDS)
-#         data = (name, password_hash)
-#         conn = create_connection()
-#         cur = conn.cursor()
-#         # Check is done twice since otherwise you can spam click the submit button to get multiple with same user
-#         # Doing it twice prevents the large timesink from the hashing
-#         if(username_exists(name)):
-#             flash("Användarnamet är upptaget!", "warning")
-#             return render_template("createuser.html", form = SignUpForm())
-#         cur.execute("INSERT INTO users (username, password) VALUES (?,?)", data)
-#         conn.commit()
-#         conn.close()
-#         flash("Kontot har skapats!", "success")
-#         return redirect("index")
-#     else:
-#         return render_template("createuser.html", form = SignUpForm())
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404

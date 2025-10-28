@@ -64,10 +64,10 @@
 <a href="{{url_for('load_question', cat = url, id = id+1)}}" class="flexAlign bottomButton">
     <div>
         {%if session["score-" + url + "-" +id|string] is defined%}
-        <p class="orangeButton">Nästa</p>
+        <p class="orangeButton" id="orangeButton">Nästa</p>
         {%else%}
 
-        <p class="orangeButton">Skippa</p>
+        <p class="orangeButton" id="orangeButton">Skippa</p>
         {%endif%}
     </div>
 </a>

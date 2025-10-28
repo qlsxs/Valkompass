@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+
+{%block backLink%}
+{{url_for('index')}}
+{%endblock%}
+
+{%block content%}
+<div id="subcategory-main-menu">
+    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin-bottom:30px">
+        <p class="title" style="color:white">Sidan hittades inte!</p>
+    </div>
+</div>
+{%endblock%}
+
+{%block fixedBottom%}
+<a href="{{url_for('index')}}" class="flexAlign bottomButton">
+    <div>
+        <p class="orangeButton">Tillbaka</p>
+    </div>
+</a>
+{%endblock%}
