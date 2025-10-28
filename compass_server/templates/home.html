@@ -11,11 +11,15 @@
         <div id="categoriesList" class="flexAlign" style="width: 100%;">
             {%for i in range(0, categories|length)%}
             {%if i == categories|length-2%} <!-- Revisor-->
-            <a href="{{url_for('load_category', cat = categories[i+1]['src'])}}" id="{{i}}" class="category"><div style="color:black">{{categories[i]["name"]}}</div></a>
+            <a href="{{url_for('load_category', cat = categories[i+1]['src'])}}" id="{{i}}" class="category">
+                <div style="color:black">{{categories[i]["name"]}}</div>
+            </a>
             {%elif categories[i]["src"] == "#"%}
-            <div class="category" onclick="toggleShownSubcategories({{categories[i]['id']}})" id="{{i}}">{{categories[i]["name"]}}</div>
+            <div class="category" onclick="toggleShownSubcategories({{categories[i]['id']}})" id="{{i}}">
+                {{categories[i]["name"]}}</div>
             {%else%}
-            <a href="{{url_for('load_category', cat = categories[i]['src'])}}" class="category subcategory" style="display: none;">
+            <a href="{{url_for('load_category', cat = categories[i]['src'])}}" class="category subcategory"
+                style="display: none;">
                 <div>{{categories[i]["name"]}}</div>
             </a>
             {%endif%}
@@ -27,7 +31,9 @@
 {%endblock%}
 
 {%block fixedBottom%}
+<a href="{{url_for('random_subcategory')}}" class="flexAlign bottomButton">
     <div class="flexAlign bottomButton">
         <p class="orangeButton">Slumpad post</p>
     </div>
+</a>
 {%endblock%}

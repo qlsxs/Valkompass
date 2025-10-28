@@ -58,6 +58,9 @@ def update_session_score():
     key = "score" + "-" + str(data["cat"]) + "-" + str(data["question_id"])
     session[key] = data["score"]
     return "true"
+@app.route("/random_subcategory")
+def random_subcategory():
+    return redirect(url_for("load_category", cat = data.get_random_subcategory()))
 
 @app.errorhandler(404)
 def page_not_found(e):

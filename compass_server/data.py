@@ -1,3 +1,5 @@
+import random
+
 categories = [
     {
         "name": "Styret",
@@ -68,7 +70,7 @@ categories = [
 
 ]
 
-subCategories = [
+sub_categories = [
     [  # Styret
         {
             "name": "Sektionsordförande",
@@ -278,12 +280,12 @@ subCategories = [
 ]
 
 def get_all_categories():
-    # Returns all categories and subcategories
+    # Returns all categories and sub_categories
     cats = []
     for i in range(0, len(categories)):
         cats.append(categories[i])
-        for j in range(0, len(subCategories[i])):
-            condensed_subcat = {"name": subCategories[i][j]["name"], "src": subCategories[i][j]["src"]}
+        for j in range(0, len(sub_categories[i])):
+            condensed_subcat = {"name": sub_categories[i][j]["name"], "src": sub_categories[i][j]["src"]}
             cats.append(condensed_subcat)
     return cats
 
@@ -291,10 +293,10 @@ def get_all_categories():
 
 def get_subcategory(cat):
     # Returns the subcategory with src cat
-    for i in range(0, len(subCategories)):
-        for j in range(0, len(subCategories[i])):
-            if (subCategories[i][j]["src"] == cat):
-                return subCategories[i][j]
+    for i in range(0, len(sub_categories)):
+        for j in range(0, len(sub_categories[i])):
+            if (sub_categories[i][j]["src"] == cat):
+                return sub_categories[i][j]
             
 def get_data_for_question(cat, i):
     # Returns everything neccesary to display the i:th question for the category cat
@@ -312,4 +314,19 @@ def get_data_for_question(cat, i):
         # only display the data for the relevant question, send less stuff
         candidates.append({"name": cand["name"], "year": cand["year"], "pfp": cand["pfp"], "answer": cand["answers"][i]})
     return {"name": category["name"], "desc": category["desc"], "src":category["src"]}, candidates, category["questions"][i], i
-        
+
+def get_random_subcategory():
+    # Returns a random subcategory
+    num_of_subcats = 0
+    for subcat in sub_categories:
+        num_of_subcats += len(subcat)
+
+    index = random.randint(0,num_of_subcats-1)
+    current_index = 0
+    while(index >= 0):
+        cat = sub_categories[current_index]
+        if(len(cat) > index):
+            return cat[index]["src"]
+        index -= len(cat)
+        current_index += 1
+    return sub_categories[current_index][index]["src"]
