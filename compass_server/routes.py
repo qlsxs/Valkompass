@@ -16,10 +16,11 @@ def load_category(cat):
     subcategory = data.get_subcategory(cat)
     if(subcategory == None):
         return abort(404)
-    candidates = []
-    for cand in subcategory["candidates"]:
-        candidates.append({"name": cand["name"], "year": cand["year"], "pfp": cand["pfp"]})
-    return render_template("category.html", subcategory = subcategory, candidates = candidates, url = cat)
+    candidates_primitive = data.get_subcat_candidates(cat)
+    candidates_condensed = []
+    for cand in candidates_primitive:
+        candidates_condensed.append({"name": cand["name"], "year": cand["year"], "pfp": cand["pfp"]})
+    return render_template("category.html", subcategory = subcategory, candidates = candidates_condensed, url = cat)
 
 @app.route("/category/<cat>/questions/<id>")
 def load_question(cat, id):
@@ -39,18 +40,17 @@ def load_question(cat, id):
 @app.route("/category/<cat>/summary")
 def show_summary(cat):
     subcategory = data.get_subcategory(cat)
+    candidates = data.get_subcat_candidates(cat)
     if(subcategory == None):
         return abort(404)
-    return render_template("summary.html", subcategory = subcategory, url = cat)
+    return render_template("summary.html", subcategory = subcategory, candidates = candidates, url = cat)
 
 @app.route("/category/<cat>/candidate/<id>")
 def load_candidate_profile(cat, id):
-    subcategory = data.get_subcategory(cat)
-    try:
-        candidate = subcategory["candidates"][int(id)]
-        return render_template("candidate.html", cat_name = subcategory["name"], questions = subcategory["questions"], candidate = candidate, url=cat)
-    except:
-        return abort(404)
+
+        candidate = data.get_candidate(cat, int(id))
+        return render_template("candidate.html", candidate = candidate, url=cat)
+   
     
 @app.route("/update_session_score", methods=["POST"])
 def update_session_score():

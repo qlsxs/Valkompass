@@ -12,32 +12,50 @@
     <div style="width: 100%;">
         <div style="display: flex;flex-direction:row;align-items:center;">
             <div>
-                <img src="{{url_for('static', filename='images/pfp/' + candidate['pfp'])}}" class="profilePicture" alt="pfp">
+                <img src="{{url_for('static', filename='images/pfp/' + candidate['pfp'])}}" class="profilePicture"
+                    alt="pfp">
             </div>
             <div class="" style="display:flex;flex-direction: column;">
                 <p style="color:white;margin:0;margin-left:20px" class="whiteBtnText">
                     {{candidate["name"]}}
                 </p>
+                {%if candidate['subcategories']|length == 1%}
                 <p style="color:white;margin:5px;margin-left:20px" class="smallerText">Sökt post:
-                    <strong>{{cat_name}}</strong><br>F-{{candidate["year"]}}
+                    <strong>{{candidate['subcategories'][0]}}</strong><br>{{candidate["year"]}}
                 </p>
+                {%else%}
+                <p style="color:white;margin:5px;margin-left:20px" class="smallerText">Sökta poster:
+                    <strong>{%for i in range(0,candidate['subcategories']|length)%}
+                        {%if i == 0%}
+                        {{candidate['subcategories'][i]}}
+                        {%else%}
+                        , {{candidate['subcategories'][i]}}
+                        {%endif%}
+                        {%endfor%}</strong><br>{{candidate["year"]}}
+                </p>
+                {%endif%}
             </div>
 
         </div>
         <div style="width:90%;">
-            {%for j in range(0, questions|length)%}
-            <div class="questionDisplayProfile" onclick="toggleVisibility('question-{{j}}')">
-                <p class="orangeButtonText" style="color: white; margin:0;flex-grow:1">
-                    {{questions[j]}}
+            {%for i in range(0, candidate['questions_list']|length)%}
+            <div style="margin-top: 60px;">
+                <p class="orangeButtonText" style="color: white;">{{candidate['subcategories'][i]}} frågor</p>
+            {%for j in range(0, candidate['questions_list'][i]|length)%}
+            <div class="questionDisplayProfile" onclick="toggleVisibility('question-{{i}}-{{j}}')">
+                <p class="bodyText" style="color: white; margin:0;flex-grow:1">
+                    {{candidate['questions_list'][i][j]}}
                 </p>
                 <div>
                     <div class="arrow" style="width: 16px;height:16px;float:left"></div>
                 </div>
             </div>
-            <div id="question-{{j}}" style="display: none;">
-                <p class="bodyText" style="color:white;margin-top:0.2em">
-                    {{candidate["answers"][j]["reason"]}}
+            <div id="question-{{i}}-{{j}}" style="display: none;">
+                <p class="smallerText" style="color:white;margin-top:0.2em">
+                    {{candidate["answers_list"][i][j]["reason"]}}
                 </p>
+            </div>
+            {%endfor%}
             </div>
             {%endfor%}
         </div>
