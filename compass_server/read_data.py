@@ -334,14 +334,14 @@ prelim_categories = [
         "id": 9,
         "subcategories": [{
             "name": "Ordförande",
-            "desc": "Fcoms ordförande ansvarar för att samordna Fcom och dess delnämnder, The Force, F.Dev och FArt som tillsammans har hand om sektionens kommunikation och informationsspridning. Hen är också ansvarig för generella sektionsmärken, ovverallerna och sångboken.",
+            "desc": "Fcoms ordförande ansvarar för att samordna Fcom och dess delnämnder, The Force, F.dev och FArt som tillsammans har hand om sektionens kommunikation och informationsspridning. Hen är också ansvarig för generella sektionsmärken, ovverallerna och sångboken.",
             "src": "fcom-ordforande",
             "amount": 1,
             "questions": []
         },
             {
             "name": "Webmaster",
-            "desc": "Webmaster är ansvarig för programmeringsgruppen F.Dev som har programmeringsmöten där de ibland jobbar på olika projekt åt resten av sektionen. Webmaster är också ansvarig för sektionens webbplats.",
+            "desc": "Webmaster är ansvarig för programmeringsgruppen F.dev som har programmeringsmöten där de ibland jobbar på olika projekt åt resten av sektionen. Webmaster är också ansvarig för sektionens webbplats.",
             "src": "fcom-webmaster",
             "amount": 1,
             "questions": []
