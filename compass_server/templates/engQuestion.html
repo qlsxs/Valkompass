@@ -30,10 +30,10 @@
             {%endif%}
             {%if session["score-" + url + "-" +id|string] is defined and session["score-" + url + "-" +id|string] == i%}
             <div class="radioCircle flexAlign" style="border-color: #FF642B;"
-                onclick="selectOption('{{url}}', {{i}}, {{id}}, '{{url_for('update_session_score')}}')">Du</div>
+                onclick="selectOption('{{url}}', {{i}}, {{id}}, '{{url_for('update_session_score')}}', 'You', 'Next')">You</div>
             {%else%}
             <div class="radioCircle flexAlign"
-                onclick="selectOption('{{url}}', {{i}}, {{id}}, '{{url_for('update_session_score')}}')"></div>
+                onclick="selectOption('{{url}}', {{i}}, {{id}}, '{{url_for('update_session_score')}}', 'You', 'Next')"></div>
             {%endif%}
             {%for j in range(0, candidates|length)%}
             {%if candidates[j]["answer"]["value"] == i+1%}

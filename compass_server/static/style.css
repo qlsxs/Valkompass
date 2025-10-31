@@ -115,7 +115,8 @@ body {
 
 .optionContainer {
     width: 7%;
-    margin-right: 6px
+    margin-right: 5px;
+    margin-left: 5px
 }
 
 .radioCircle {

@@ -64,9 +64,15 @@ function calculateRadioRadius(id) {
     }
 }
 
-function selectOption(cat, id, qnr, url) {
+function selectOption(cat, id, qnr, url, message, message2) {
     // This function is called when the user clicks on the radio button for score id on category cat. Reveals the candiate scores and updates individual choice
     // Reveal candidates
+    if(message == undefined){
+        message = "Du"
+    }
+    if(message2 == undefined){
+        message2 = "Nästa"
+    }
     let candidatePlacing = [].slice.call(document.getElementsByClassName("radioCircleImage"))
 
     for (let i = 0; i < candidatePlacing.length; i++) {
@@ -78,14 +84,14 @@ function selectOption(cat, id, qnr, url) {
     for (let i = 0; i < options.length; i++) {
         if (i == id) {
             options[i].style.borderColor = "#FF642B"
-            options[i].innerHTML = "Du"
+            options[i].innerHTML = message
         }
         else {
             options[i].style.borderColor = "white"
             options[i].innerHTML = ""
         }
     }
-    document.getElementById("orangeButton").innerHTML = "Nästa"
+    document.getElementById("orangeButton").innerHTML = message2
     updateSessionScore(cat, id, qnr, url)
 }
 

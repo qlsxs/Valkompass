@@ -9,10 +9,28 @@ def get_subcategory(cat, categories):
 
 def get_correct_subcat(candidate_count, subcats, name):
     # Some people are applying for multiple posts, find the correct one for this instance of the person, which are treated differently here.
-    subcats_list = subcats.split(",")
+    subcats_list = comma_split(subcats)
     s = correct_name(subcats_list[candidate_count[name]].strip())
     return s
     
+def comma_split(str):
+    # Splits like a normal .split on comma, but ignores if it is in parenthesis
+    par = 0
+    last_index = 0
+    substrings = []
+    for i in range(0,len(str)):
+        s = str[i]
+        if(s == "("):
+            par += 1
+        elif(s == ")"):
+            par -= 1
+        elif(s == "," and par == 0):
+            substrings.append(str[last_index:i])
+            last_index = i+1
+    substrings.append(str[last_index:])
+    return substrings
+
+
 def update_candidate_count(candidate_count, name):
     # Keeps track of how many times a certain candidate has been seen (to deal with people applying to multiple posts), shifted by 1 for no reason (or rather a stupid reason that isnt valid)
     if(name in candidate_count.keys()):
@@ -55,9 +73,9 @@ def correct_name(name):
             return "jamn-ojamn"
         case "Aktivitetsnämndens ordförande (oFAN)":
             return "fan-ofan"
-        case "Lokalnämndens ordförande (Generalkonsul; GK)":
+        case "Lokalnämndens ordförande (Generalkonsul, GK)":
             return "frum-gk"
-        case "Lokalnämndens kassör (Chargé d'Affaires; CdA)":
+        case "Lokalnämndens kassör (Chargé d'Affaires, CdA)":
             return "frum-cda"
         case "Kommunikationsnämndens ordförande":
             return "fcom-ordforande"
@@ -118,11 +136,16 @@ def read_data(categories):
         candidate["subcategory"] = get_correct_subcat(candidate_count, person[3], candidate["name"])    
         pfp = candidate["name"]
         if(pfp == "Marcus Joyce"): 
-        # Since there is only one person with this, ill just add this as a very specific if statement. I dont have time to make a good solution rn anyway
+        # Since there is only two people with multiple pfps (whyy), ill just add this as a very specific if statement. I dont have time to make a good solution rn anyway
             if(candidate["subcategory"] == "fkm-klubbmastare"):
                 pfp = pfp + " (Klubbis)"
             else:
                 pfp = pfp + " (CDA)"
+        elif(pfp == "Kristina Torell"):
+            if(candidate["subcategory"] == "jamn-ojamn"):
+                pfp = pfp + " (JämN)"
+            else:
+                pfp = pfp + " (FRum)"
         candidate["pfp"] = pfp + ".jpg"
         if(current_subcat != candidate["subcategory"]):
             current_subcat = candidate["subcategory"]
