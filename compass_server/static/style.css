@@ -54,7 +54,7 @@ body {
 
 .category {
     width: 90%;
-    height: 100px;
+    min-height: 100px;
     background-color: white;
     margin: 20px;
     border: 2px solid #000;
@@ -73,7 +73,7 @@ body {
     border-color: white;
     color: white;
     text-decoration: none;
-    height: 90px;
+    min-height: 90px !important;
 }
 
 .category:hover {
@@ -343,22 +343,22 @@ body {
 
     .bodyText {
         font-family: "Roboto";
-        font-size: 13px;
+        font-size: 16px;
     }
 
     .orangeButtonText {
         font-family: "Roboto SemiBold";
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .whiteBtnText {
         font-family: "Roboto";
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .smallerText {
         font-family: "Roboto";
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .profilePicture {
@@ -373,4 +373,38 @@ body {
     .orangeButton {
         font-size: 20px;
     }
+}
+
+@media(max-width:600px) {
+
+    #widthDiv,
+    #bottomDiv {
+        width: 95%
+    }
+
+    .title {
+        font-family: "EB Garmond";
+        font-size: 28px;
+    }
+
+    .bodyText {
+        font-family: "Roboto";
+        font-size: 14px;
+    }
+
+    .orangeButtonText {
+        font-family: "Roboto SemiBold";
+        font-size: 16px;
+    }
+
+    .whiteBtnText {
+        font-family: "Roboto";
+        font-size: 16tpx;
+    }
+
+    .smallerText {
+        font-family: "Roboto";
+        font-size: 12px;
+    }
+
 }
