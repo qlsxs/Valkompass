@@ -1,5 +1,7 @@
 {%extends "base.html"%}
 
+{%block title%}{{candidate["name"]}}{%endblock%}
+
 {%block backLink%}
 {{url_for('load_category', cat = url)}}
 {%endblock%}

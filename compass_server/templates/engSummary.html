@@ -1,0 +1,101 @@
+{%extends "base.html"%}
+
+{%block title%}{{subcategory["name"]}} summary{%endblock%}
+
+{%block backLink%}
+{{url_for('load_question', cat = url, id = subcategory["questions"]|length-1)}}
+{%endblock%}
+
+{%block content%}
+<div id="subcategory-main-menu">
+    <div id="titleDiv">
+        <p id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</p>
+    </div>
+    <div style="width: 100%;">
+        <div class="flexAlign" style="width: 100%;" id="questions">
+            <div class="category" onclick="toggleVisibility('results-container')">
+                Questions
+            </div>
+            <div style="width: 100%;display:none" class="flexAlign" id="results-container">
+                {%for i in range(0, subcategory["questions"]|length)%}
+                <div class="category subcategory" onclick="toggleVisibility('{{i}}-results')">
+                    {{subcategory["questions"][i]}}</div>
+                <div class="optionMainDiv" style="width:90%;justify-content: center;display:none" id="{{i}}-results">
+                    {%for j in range(0,6)%}
+                    <div class="optionContainer">
+                        {%if j == 0%}
+                        <div class="invisibleRadioCircle flexAlign bodyText">1</div>
+                        {%elif j == 4%}
+                        <div class="invisibleRadioCircle flexAlign bodyText">5</div>
+                        {%elif j == 5%}
+                        <div class="invisibleRadioCircle flexAlign bodyText">Other</div>
+                        {%else%}
+                        <div class="invisibleRadioCircle"></div>
+                        {%endif%}
+                        <div class="radioCircle flexAlign"></div>
+                        {%for candidate in candidates%}
+                        {%if candidate["answers"][i]["value"] == j+1%}
+                        <img src="{{url_for('static', filename='images/pfp/' + candidate['pfp'])}}"
+                            style="display:block" class="radioCircleImage">
+
+                        {%endif%}
+                        {%endfor%}
+                        {%if session["score-" + url + "-" +i|string] is defined and session["score-" + url + "-"
+                        +i|string] == j%} <!-- For some reason i decided to shift this one by 1-->
+                        <div class="radioCircle flexAlign" onclick="selectOption('{{url}}', {{i}}, {{id}})">You</div>
+                        {%endif%}
+                    </div>
+                    {%endfor%}
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+
+        <div class="flexAlign" style="width: 100%;" id="candidates">
+            <div class="category" onclick="toggleVisibility('candidate-container')">
+                Candidates
+            </div>
+            <div style="width: 100%;display:none" class="flexAlign" id="candidate-container">
+                {%for i in range(0, candidates|length)%}
+                <div class="candidateContainerSummary" onclick="toggleVisibility('candidate-{{i}}')">
+                    <div>
+                        <img src="{{url_for('static', filename='images/pfp/' + candidates[i]['pfp'])}}"
+                            class="radioCircleImage" style="display: block;width:90px;height:90px" alt="">
+                    </div>
+                    <div style="display:flex;flex-direction:row;align-items:center;width:80%">
+                        <div style="flex-grow: 1;">
+                            <p style="color:white;margin-left:20px" class="whiteBtnText">
+                                {{candidates[i]["name"]}}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="arrow" style="width: 10px; height:10px"></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div style="width:90%;display:none" id="candidate-{{i}}">
+                    {%for j in range(0, subcategory["questions"]|length)%}
+                    <div style="margin-top: 24px; margin-bottom:24px">
+                        <p class="bodyText" style="color: white; margin:0;font-weight:bold">
+                            {{j+1}}. {{subcategory["questions"][j]}}
+                        </p>
+                        <p class="bodyText" style="color:white;text-indent:1em;margin-top:0.2em">
+                            <br>{{candidates[i]["answers"][j]["reason"]}}
+                        </p>
+                    </div>
+                    {%endfor%}
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    {%endblock%}
+
+    {%block fixedBottom%}
+    <a href="{{url_for('home')}}" class="flexAlign bottomButton">
+        <div>
+            <p class="orangeButton">Back to all posts</p>
+        </div>
+    </a>
+    {%endblock%}

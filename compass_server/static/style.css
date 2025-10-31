@@ -72,7 +72,8 @@ body {
     background-color: #231F20;
     border-color: white;
     color: white;
-    text-decoration: none
+    text-decoration: none;
+    height: 90px;
 }
 
 .category:hover {

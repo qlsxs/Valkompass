@@ -20,6 +20,8 @@ def load_category(cat):
     candidates_condensed = []
     for cand in candidates_primitive:
         candidates_condensed.append({"name": cand["name"], "year": cand["year"], "pfp": cand["pfp"]})
+    if(loadEnglish(cat)):
+        return render_template("engCategory.html", subcategory = subcategory, candidates = candidates_condensed, url = cat)
     return render_template("category.html", subcategory = subcategory, candidates = candidates_condensed, url = cat)
 
 @app.route("/category/<cat>/questions/<id>")
@@ -34,7 +36,9 @@ def load_question(cat, id):
             return abort(404)
         elif(question == "Max"):
             return redirect(url_for("show_summary", cat = cat))
-        else:     
+        else: 
+            if(loadEnglish(cat)):
+                return render_template("engQuestion.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat)
             return render_template("question.html", subcategory = subcategory, candidates = candidates, question = question, id = int(id), url = cat)
 
 @app.route("/category/<cat>/summary")
@@ -43,13 +47,16 @@ def show_summary(cat):
     candidates = data.get_subcat_candidates(cat)
     if(subcategory == None):
         return abort(404)
-    return render_template("summary.html", subcategory = subcategory, candidates = candidates, url = cat)
+    if(loadEnglish(cat)):
+        return render_template("engSummary.html", subcategory = subcategory, candidates = candidates, url = cat)
+    return render_template("engSummary.html", subcategory = subcategory, candidates = candidates, url = cat)
 
 @app.route("/category/<cat>/candidate/<id>")
 def load_candidate_profile(cat, id):
-
-        candidate = data.get_candidate(cat, int(id))
-        return render_template("candidate.html", candidate = candidate, url=cat)
+    candidate = data.get_candidate(cat, int(id))
+    if(loadEnglish(cat)):
+        return render_template("engCandidate.html", candidate = candidate, url=cat)
+    return render_template("candidate.html", candidate = candidate, url=cat)
    
     
 @app.route("/update_session_score", methods=["POST"])
@@ -58,6 +65,7 @@ def update_session_score():
     key = "score" + "-" + str(data["cat"]) + "-" + str(data["question_id"])
     session[key] = data["score"]
     return "true"
+
 @app.route("/random_subcategory")
 def random_subcategory():
     return redirect(url_for("load_category", cat = data.get_random_subcategory()))
@@ -65,3 +73,6 @@ def random_subcategory():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+def loadEnglish(cat):
+    return cat.split("-")[0]=="fint"

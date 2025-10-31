@@ -1,5 +1,7 @@
 {%extends "base.html"%}
 
+{%block title%}{{subcategory["name"]}} sammanfattning{%endblock%}
+
 {%block backLink%}
 {{url_for('load_question', cat = url, id = subcategory["questions"]|length-1)}}
 {%endblock%}

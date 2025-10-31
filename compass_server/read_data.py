@@ -379,7 +379,7 @@ prelim_categories = [
         "src": "#",
         "id": 12,
         "subcategories": [{
-            "name": "SPECIAL",
+            "name": "Revisor",
             "desc": "Revisorerna ska ha koll på sektionens styrdokument och granska och stötta styrelsen och resten av sektionen i deras arbete kring det. Eftersom de ska vara granskande av sektionens arbete är revisorer ofta alumner som inte längre har en särskilt stark koppling till resten av sektionens funktionärer och arbete.",
             "src": "revisor-revisor",
             "amount": 2,

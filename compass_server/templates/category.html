@@ -1,5 +1,7 @@
 {%extends "base.html"%}
 
+{%block title%}{{subcategory["name"]}}{%endblock%}
+
 {%block backLink%}
 {{url_for('home')}}
 {%endblock%}
@@ -8,33 +10,46 @@
 <div id="subcategory-main-menu">
     <div id="titleDiv">
         <p id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</p>
-        <p id="subcategory-description" class="bodyText">{{subcategory["desc"]}} Läs mer <a href="https://docs.google.com/document/d/1_X0KRR7STmp-8EnKByvwBcHs4K95DGVnUq6pSGXwz3s/edit?tab=t.0">här</a><br>Sökes:
+        <p id="subcategory-description" class="bodyText">{{subcategory["desc"]}} Läs mer <a
+                href="https://docs.google.com/document/d/1_X0KRR7STmp-8EnKByvwBcHs4K95DGVnUq6pSGXwz3s/edit?tab=t.0">här</a><br>Sökes:
             <strong>{{subcategory["amount"]}}st</strong>
         </p>
     </div>
     <div style="width: 100%;">
+        {%if candidates|length == 0%}
+        <p style="color:white" class="whiteBtnText"><strong>Ingen har sökt denna post</strong></p>
+        {%else%}
         <p style="color:white;" class="whiteBtnText"><strong>Kandidater</strong>:</p>
         <div id="candidate-list">
             {%for i in range(0,candidates|length)%}
             <a href="{{url_for('load_candidate_profile', cat = url, id = i)}}">
                 <div class="candidate-list-div" style="margin-bottom:10px">
                     <div class="flexAlign">
-                        <img src="{{url_for('static', filename='images/pfp/' + candidates[i]['pfp'])}}" alt="" class="pfp"
-                            style="width: 60px; height:60px;margin-right:15px">
+                        <img src="{{url_for('static', filename='images/pfp/' + candidates[i]['pfp'])}}" alt=""
+                            class="pfp" style="width: 60px; height:60px;margin-right:15px">
                     </div>
                     <p class="whiteBtnText" style="color: white;">{{candidates[i]["name"]}}</p>
                 </div>
             </a>
             {%endfor%}
         </div>
+        {%endif%}
     </div>
 </div>
 {%endblock%}
 
 {%block fixedBottom%}
+{%if candidates|length == 0%}
+<a href="{{url_for('home')}}" class="flexAlign bottomButton">
+    <div>
+        <p class="orangeButton">Tillbaka</p>
+    </div>
+</a>
+{%else%}
 <a href="{{url_for('load_question', cat = url, id = 0)}}" class="flexAlign bottomButton">
     <div>
         <p class="orangeButton">Nästa</p>
     </div>
 </a>
+{%endif%}
 {%endblock%}
