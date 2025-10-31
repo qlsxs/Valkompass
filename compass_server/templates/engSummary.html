@@ -78,7 +78,7 @@
                     {%for j in range(0, subcategory["questions"]|length)%}
                     <div style="margin-top: 24px; margin-bottom:24px">
                         <p class="bodyText" style="color: white; margin:0;font-weight:bold">
-                            {{j+1}}. {{subcategory["questions"][j]}}
+                            {{j+1}}. {{subcategory["questions"][j]["question"]}}
                         </p>
                         <p class="bodyText" style="color:white;text-indent:1em;margin-top:0.2em">
                             <br>{{candidates[i]["answers"][j]["reason"]}}
