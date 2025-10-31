@@ -19,7 +19,7 @@
             <div style="width: 100%;display:none" class="flexAlign" id="results-container">
                 {%for i in range(0, subcategory["questions"]|length)%}
                 <div class="category subcategory" onclick="toggleVisibility('{{i}}-results')">
-                    {{subcategory["questions"][i]}}</div>
+                    {{subcategory["questions"][i]["question"]}}</div>
                 <div class="optionMainDiv" style="width:90%;justify-content: center;display:none" id="{{i}}-results">
                     {%for j in range(0,6)%}
                     <div class="optionContainer">

@@ -46,7 +46,7 @@
             {%for j in range(0, candidate['questions_list'][i]|length)%}
             <div class="questionDisplayProfile" onclick="toggleVisibility('question-{{i}}-{{j}}')">
                 <p class="bodyText" style="color: white; margin:0;flex-grow:1">
-                    {{candidate['questions_list'][i][j]}}
+                    {{candidate['questions_list'][i][j]["question"]}}
                 </p>
                 <div>
                     <div class="arrow" style="width: 16px;height:16px;float:left"></div>

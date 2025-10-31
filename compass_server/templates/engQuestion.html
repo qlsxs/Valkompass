@@ -12,9 +12,9 @@
         <p id="subcategory-title" class="title" style="color:white;">{{subcategory["name"]}}</p>
     </div>
     <div style="width: 100%;color:white;margin-bottom:50px" class="bodyText">
-        {{question}}<br><br>
-        1 - Nej<br>
-        5 - Ja
+        {{question["question"]}}<br><br>
+        1 - {{question["lowerScale"]}}<br>
+        5 - {{question["upperScale"]}}
     </div>
     <div class="optionMainDiv" style="display: flex;justify-content:center">
         {%for i in range(0,6)%}

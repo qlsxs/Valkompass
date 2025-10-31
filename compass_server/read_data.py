@@ -81,8 +81,20 @@ def correct_name(name):
             return "fysikalen-stabsledning"
     return ""
             
+def read_question_scales():
+    lines = []
+    with open('compass_server/static/questionScaleData.csv', mode = "r", encoding="utf-8") as file:
+        csvFile = csv.reader(file)
+        for i,line in enumerate(csvFile):
+            if(not i == 0):
+                # Add filler to make the questions in the doc align
+                line.insert(0, "filler")
+                lines.append(line)
+            
+    return lines
 
 def read_data(categories):
+    people = []
     with open('compass_server/static/data.csv', mode ='r', encoding='utf-8') as file:
     # I dont want to explain any of this
         csvFile = csv.reader(file)
@@ -93,41 +105,38 @@ def read_data(categories):
                 query = line
             else:
                 people.append(line)
-        candidates = []
-        candidate_count = {}
-        current_subcat = ""
-        for person in people:
-            new_subcategory = False
-                
-            candidate = {}
-            candidate["name"] = person[1].strip()
-            candidate["year"] = person[2]
-
-            update_candidate_count(candidate_count, candidate["name"])
-            candidate["subcategory"] = get_correct_subcat(candidate_count, person[3], candidate["name"])
-            
-            pfp = candidate["name"]
-            if(pfp == "Marcus Joyce"): 
-            # Since there is only one person with this, ill just add this as a very specific if statement. I dont have time to make a good solution rn anyway
-                if(candidate["subcategory"] == "fkm-klubbmastare"):
-                    pfp = pfp + " (Klubbis)"
-                else:
-                    pfp = pfp + " (CDA)"
-            candidate["pfp"] = pfp + ".jpg"
-            
-            if(current_subcat != candidate["subcategory"]):
-                current_subcat = candidate["subcategory"]
-                new_subcategory = True
-            candidate["answers"] = []
-            for i in range(4, len(query), 2):
-                subcat = None
+    candidates = []
+    candidate_count = {}
+    current_subcat = ""
+    scales = read_question_scales()
+    for person in people:
+        new_subcategory = False
+        candidate = {}
+        candidate["name"] = person[1].strip()
+        candidate["year"] = person[2]
+        update_candidate_count(candidate_count, candidate["name"])
+        candidate["subcategory"] = get_correct_subcat(candidate_count, person[3], candidate["name"])    
+        pfp = candidate["name"]
+        if(pfp == "Marcus Joyce"): 
+        # Since there is only one person with this, ill just add this as a very specific if statement. I dont have time to make a good solution rn anyway
+            if(candidate["subcategory"] == "fkm-klubbmastare"):
+                pfp = pfp + " (Klubbis)"
+            else:
+                pfp = pfp + " (CDA)"
+        candidate["pfp"] = pfp + ".jpg"
+        if(current_subcat != candidate["subcategory"]):
+            current_subcat = candidate["subcategory"]
+            new_subcategory = True
+        candidate["answers"] = []
+        for i in range(4, len(query), 2):
+            subcat = None
+            if(new_subcategory):
+                subcat = get_subcategory(candidate["subcategory"], categories)
+            if(person[i] != ""):
+                candidate["answers"].append({"value": int(person[i]), "reason": person[i+1]})
                 if(new_subcategory):
-                    subcat = get_subcategory(candidate["subcategory"], categories)
-                if(person[i] != ""):
-                    candidate["answers"].append({"value": int(person[i]), "reason": person[i+1]})
-                    if(new_subcategory):
-                        subcat["questions"].append(query[i])
-            candidates.append(candidate)
+                    subcat["questions"].append({"question": query[i], "lowerScale": scales[0][int(i/2)], "upperScale": scales[1][int(i/2)]})
+        candidates.append(candidate)
     return candidates, categories
             
 prelim_categories = [
@@ -185,7 +194,7 @@ prelim_categories = [
         },
             {
             "name": "Föhsare",
-            "desc": "Föhsare description",
+            "desc": "Föhsarna är tillsammans med Fadderisterna ansvariga för att arrangera sektionens mottagning, de två veckorna i augusti då vi välkomnar alla nyantagna. De är mottagningens ordförande, vice ordförande och kassör och de har också en teatral roll under mottagningen där de är mystiska och allvetande.",
             "src": "mottagningen-fohsare",
             "amount": 3,
             "questions": []
@@ -292,7 +301,7 @@ prelim_categories = [
             "name": "President",
             "desc": "FINTo is the head of the international organization in the chapter. They organize meetings, keep in contact with the administration and lead FINT in its day to day work. They are also responsible for the international reception for all exchange students coming to the physics chapter. ",
             "src": "fint-president",
-            "amount": 0,
+            "amount": 1,
             "questions": []
         }]
     },

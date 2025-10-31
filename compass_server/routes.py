@@ -49,7 +49,7 @@ def show_summary(cat):
         return abort(404)
     if(loadEnglish(cat)):
         return render_template("engSummary.html", subcategory = subcategory, candidates = candidates, url = cat)
-    return render_template("engSummary.html", subcategory = subcategory, candidates = candidates, url = cat)
+    return render_template("summary.html", subcategory = subcategory, candidates = candidates, url = cat)
 
 @app.route("/category/<cat>/candidate/<id>")
 def load_candidate_profile(cat, id):
